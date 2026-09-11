@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Utopia Laundromat, Whitestone, NY.">
+<title>Utopia Laundromat — Welcome</title>
+<link rel="icon" href="images/logo.jpg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap');
+:root{--navy:#102f74;--blue:#2670d9;--cream:#fffdfa;--gold:#e5c36c}
+*{box-sizing:border-box} html,body{height:100%;margin:0} body{overflow:hidden;background:var(--navy);color:var(--cream);font-family:Archivo,Arial,sans-serif}
+.screen{position:relative;min-height:100%;isolation:isolate;display:grid;place-items:center;overflow:hidden;background:linear-gradient(137deg,#0c2a67 0%,#1965c3 53%,#71c4ef 100%)}
+.screen::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,22,59,.56),transparent 65%),linear-gradient(0deg,rgba(4,20,57,.38),transparent 52%)}
+.store{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.32;mix-blend-mode:luminosity;transform:scale(1.06);animation:photo 2.7s cubic-bezier(.2,.8,.2,1) forwards}
+.b{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.48);background:radial-gradient(circle at 31% 25%,rgba(255,255,255,.8),rgba(255,255,255,.13) 31%,rgba(99,193,255,.12) 58%,rgba(0,29,92,.13));box-shadow:inset -9px -12px 22px rgba(0,47,138,.17),0 18px 40px rgba(0,32,95,.2);animation:float 4.4s ease-in-out infinite alternate}
+.b1{width:150px;height:150px;top:10%;left:12%;animation-delay:-1.8s}.b2{width:76px;height:76px;right:15%;top:18%;animation-delay:-.5s}.b3{width:210px;height:210px;right:-65px;bottom:-42px;animation-delay:-2.2s}.b4{width:35px;height:35px;left:25%;bottom:17%;animation-delay:-3s}
+.content{width:min(920px,calc(100% - 44px));text-align:center;animation:arrive .72s .12s cubic-bezier(.18,.8,.22,1) both}.logo{width:75px;height:75px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.8);box-shadow:0 10px 35px rgba(0,22,70,.35);margin-bottom:28px}.kicker{font-size:11px;letter-spacing:.28em;font-weight:700;text-transform:uppercase;opacity:.78}.content h1{font-family:Fraunces,serif;font-weight:500;font-size:clamp(46px,8vw,91px);line-height:.95;letter-spacing:-.035em;margin:15px 0}.content h1 em{font-style:italic;font-weight:400;color:var(--gold)}.content p{max-width:510px;margin:0 auto;color:rgba(255,255,255,.88);font-size:clamp(15px,2.2vw,19px);line-height:1.55}.details{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}.details span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:9px 15px;background:rgba(12,46,107,.2);font-size:12px;font-weight:700;letter-spacing:.04em}.loader{width:min(184px,54vw);height:2px;margin:36px auto 0;background:rgba(255,255,255,.28);border-radius:99px;overflow:hidden}.loader i{display:block;width:0;height:100%;background:#fff;animation:load 2.7s cubic-bezier(.65,0,.35,1) forwards}.skip{display:inline-block;margin-top:18px;color:#fff;font-size:12px;letter-spacing:.13em;text-decoration:none;text-transform:uppercase;opacity:.75}.skip:hover{opacity:1}
+@keyframes arrive{from{opacity:0;transform:translateY(24px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}@keyframes photo{to{transform:scale(1)}}@keyframes load{to{width:100%}}@keyframes float{to{transform:translate3d(12px,-24px,0) scale(1.07)}}
+@media (max-width:560px){.b1{left:-45px;top:4%}.b2{right:-13px}.content h1{font-size:48px}.details{gap:8px}.details span{font-size:11px;padding:8px 12px}}
+</style>
+</head>
+<body>
+<main class="screen">
+  <img class="store" src="images/1.jpg" alt="">
+  <i class="b b1"></i><i class="b b2"></i><i class="b b3"></i><i class="b b4"></i>
+  <section class="content" aria-label="Welcome to Utopia Laundromat">
+    <img class="logo" src="images/logo.jpg" alt="Utopia Laundromat">
+    <div class="kicker">Whitestone · Queens · New York</div>
+    <h1>Fresh laundry,<br><em>made simple.</em></h1>
+    <p>Self-service laundry, same-day wash &amp; fold, and dry cleaning — all under one roof.</p>
+    <div class="details"><span>Open 7 days</span><span>17-08 Utopia Pkwy</span><span>718-352-7622</span></div>
+    <div class="loader" aria-hidden="true"><i></i></div>
+    <a class="skip" href="home.html">Enter site</a>
+  </section>
+</main>
+<script>setTimeout(()=>location.replace('home.html'),2800);</script>
+</body>
+</html>
