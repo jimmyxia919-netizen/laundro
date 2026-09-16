@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>店内管理 · Utopia Laundromat</title>
+<link rel="icon" href="images/logo.jpg">
+<style>
+:root{--ink:#141412;--paper:#faf7f1;--card:#fffdf9;--line:#e3ddcf;--muted:#837c70;--blue:#1b3fcc;--green:#1d7a3a;--red:#b3261e;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:24px 18px 90px}
+header.top{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:14px 0}
+header.top .wrap{padding-top:0;padding-bottom:0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header.top img{width:44px;height:44px;border-radius:50%}
+header.top b{font-size:19px}
+.badge{background:#e9f5ec;color:var(--green);font-size:13px;font-weight:700;border-radius:999px;padding:4px 12px}
+h1{font-size:26px;margin:26px 0 6px}
+.sub{color:var(--muted);font-size:15px;margin:0 0 8px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:18px 0}
+section.card h2{font-size:19px;margin:0 0 4px}
+section.card .hint{font-size:13.5px;color:var(--muted);margin:0 0 12px}
+.row{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row label{flex:1;font-weight:600}
+.row label small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.money{display:flex;align-items:center;gap:6px}
+.money b{font-size:19px}
+input[type=number]{font-size:19px;padding:10px 12px;border:2px solid var(--line);border-radius:12px;width:120px;text-align:right;background:#fff;color:var(--ink)}
+input[type=number]:focus{outline:none;border-color:var(--blue)}
+input[type=number].bad{border-color:var(--red);background:#fdeceb}
+.prod{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.prod:first-of-type{border-top:0}
+.prod img{width:58px;height:58px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#fff}
+.prod .nm{flex:1}.prod .nm b{display:block;font-size:15.5px}.prod .nm small{color:var(--muted);font-size:12.5px}
+.switch{position:relative;width:66px;height:38px;flex:0 0 auto;border:0;border-radius:999px;background:#c9c4b4;cursor:pointer;transition:.25s}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:30px;height:30px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.switch[aria-checked="true"]{background:var(--green)}
+.switch[aria-checked="true"]::after{left:32px}
+.stxt{font-size:12.5px;font-weight:700;min-width:52px;text-align:right}
+.stxt.on{color:var(--green)}.stxt.off{color:var(--red)}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+button.big{flex:1;min-width:150px;font-size:17px;font-weight:800;border-radius:14px;padding:15px;cursor:pointer;border:2px solid var(--ink)}
+button.primary{background:var(--ink);color:#fff}
+button.plain{background:#fff;color:var(--ink)}
+button.danger{background:#fff;color:var(--red);border-color:var(--red)}
+ol.steps{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:16px 18px 16px 40px;font-size:15px}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-weight:700;border-radius:999px;padding:12px 26px;opacity:0;pointer-events:none;transition:.3s;z-index:60}
+#toast.show{opacity:1;transform:translateX(-50%)}
+#pinGate{position:fixed;inset:0;background:var(--paper);z-index:100;display:grid;place-items:center;padding:20px}
+#pinGate .box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:36px 30px;text-align:center;max-width:360px;width:100%}
+#pinGate input{font-size:26px;letter-spacing:12px;text-align:center;width:100%;padding:12px;border:2px solid var(--line);border-radius:12px;margin:16px 0}
+#pinGate .err{color:var(--red);font-size:14px;min-height:22px}
+#pinGate button{width:100%;font-size:18px;font-weight:800;background:var(--ink);color:#fff;border:0;border-radius:14px;padding:14px;cursor:pointer}
+.warnbar{display:none;background:#fff7e0;border:1px solid #e5c36c;border-radius:14px;padding:12px 16px;font-size:14.5px;margin:14px 0}
+footer.note{color:var(--muted);font-size:13px;text-align:center;margin-top:26px}
+</style>
+</head>
+<body>
+<div id="pinGate">
+  <div class="box">
+    <img src="images/logo.jpg" alt="" width="72" height="72" style="border-radius:50%">
+    <h2 style="margin:14px 0 4px">店内管理</h2>
+    <p style="color:var(--muted);font-size:14px;margin:0">请输入4位密码（防止顾客误触）</p>
+    <input id="pinInput" type="password" inputmode="numeric" maxlength="4" placeholder="····" autocomplete="off">
+    <div class="err" id="pinErr"></div>
+    <button id="pinGo">进入</button>
+  </div>
+</div>
+
+<header class="top"><div class="wrap">
+  <img src="images/logo.jpg" alt="">
+  <b>店内管理</b><span class="badge">改价 · 上下架</span>
+  <span style="flex:1"></span>
+  <a href="home.html" style="font-size:15px">去首页看效果 →</a>
+</div></header>
+
+<div class="wrap">
+  <div class="warnbar" id="storeWarn">⚠️ 当前浏览器存不住设置（可能是无痕模式）。你照样可以改、可以导出文件，但换浏览器后要重新导一次。</div>
+
+  <h1>价格和商品，一页全搞定</h1>
+  <p class="sub">改完自动保存。改完第 3 步别忘了：点「导出 config.js」把文件发给管理员覆盖上传，全网客人才看得到。</p>
+  <ol class="steps">
+    <li>下面改价格、开关商品（自动保存）。</li>
+    <li>点「<b>导出 config.js</b>」下载文件。</li>
+    <li>把文件发给网站管理员，覆盖上传到网站，<b>全网生效</b>。</li>
+  </ol>
+
+  <div class="btnrow">
+    <button class="big primary" id="btnExport">⬇ 导出 config.js</button>
+    <button class="big plain" id="btnReset">↺ 恢复默认</button>
+  </div>
+
+  <section class="card" id="secWash"><h2>🧺 自助洗衣</h2><p class="hint">投币洗衣机和烘干机单价（美元）。</p></section>
+  <section class="card" id="secDrop"><h2>📦 代收代洗</h2><p class="hint">最低消费约对应 <b id="wminHint">10</b> 磅（自动算）。</p></section>
+  <section class="card" id="secBed"><h2>🛏️ 被子毛毯</h2><p class="hint">整件价格（美元）。</p></section>
+  <section class="card" id="secDry"><h2>👔 干洗</h2><p class="hint">干洗起步价（美元/件）。</p></section>
+  <section class="card"><h2>🛒 店内商品 · 改价＋上下架</h2><p class="hint">绿色开关 = 上架中，灰色 = 已下架（顾客看不到）。价格框直接改数字。</p><div id="prodList"></div></section>
+
+  <footer class="note">密码只是防顾客误触，不是真锁。本页中文操作即可，不用懂电脑。</footer>
+</div>
+<div id="toast"></div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  if(!window.UTOPIA_DEFAULTS || !window.UTOPIA_CFG){
+    document.body.innerHTML = '<div class="wrap"><h1>打不开</h1><p>缺少 config.js，请确认 admin.html 和 config.js 在同一个文件夹里。</p></div>';
+    return;
+  }
+  /* PIN gate (anti-tap only, not real security) */
+  var PIN = "1234";
+  var gate = document.getElementById("pinGate");
+  document.getElementById("pinGo").addEventListener("click", function(){
+    if(document.getElementById("pinInput").value === PIN){ gate.style.display = "none"; }
+    else { document.getElementById("pinErr").textContent = "密码不对，再试一次"; }
+  });
+  document.getElementById("pinInput").addEventListener("keydown", function(e){
+    if(e.key === "Enter") document.getElementById("pinGo").click();
+  });
+
+  /* storage availability */
+  var storeOK = true;
+  try{ localStorage.setItem("__t","1"); localStorage.removeItem("__t"); }
+  catch(e){ storeOK = false; document.getElementById("storeWarn").style.display = "block"; }
+
+  var D = window.UTOPIA_DEFAULTS, C = window.UTOPIA_CFG;
+  function num(v, fb){ v = parseFloat(v); return (isFinite(v) && v >= 0 && v <= 99999) ? Math.round(v*100)/100 : fb; }
+  function toast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 1600);
+  }
+  function collect(){
+    var prices = {}, products = [];
+    document.querySelectorAll("input[data-pkey]").forEach(function(el){
+      var fb = D.prices[el.dataset.pkey];
+      prices[el.dataset.pkey] = num(el.value, fb);
+      el.value = prices[el.dataset.pkey];
+      el.classList.remove("bad");
+    });
+    document.querySelectorAll(".prod[data-pid]").forEach(function(row){
+      var inp = row.querySelector("input[data-pp]"), sw = row.querySelector(".switch");
+      var fb = D.prices["shop."+row.dataset.pid];
+      var price = num(inp.value, fb); inp.value = price; inp.classList.remove("bad");
+      products.push({id:row.dataset.pid, price:price, visible:sw.getAttribute("aria-checked")==="true"});
+    });
+    return {prices:prices, products:products};
+  }
+  function save(silent){
+    try{ localStorage.setItem("utopia_cfg_v1", JSON.stringify(collect())); }
+    catch(e){ /* storage unavailable: export still works */ }
+    refreshWmin();
+    if(!silent) toast("已保存 ✓");
+  }
+  function markBad(el){ el.classList.add("bad"); }
+  document.addEventListener("change", function(e){
+    var el = e.target;
+    if(el.matches("input[data-pkey], input[data-pp]")){
+      var v = parseFloat(el.value);
+      if(!isFinite(v) || v < 0 || v > 99999){ markBad(el); toast("请输入 0–99999 的数字"); return; }
+    }
+    save(false);
+  });
+
+  /* price rows */
+  function priceRow(secId, key, label, sub){
+    var sec = document.getElementById(secId);
+    var div = document.createElement("div");
+    div.className = "row";
+    div.innerHTML = '<label>'+label+(sub?'<small>'+sub+'</small>':'')+'</label><span class="money"><b>$</b><input type="number" data-pkey="'+key+'" step="0.01" min="0" max="99999"></span>';
+    sec.appendChild(div);
+  }
+  priceRow("secWash","wash.small","小型洗衣机","每次");
+  priceRow("secWash","wash.medium","中型洗衣机","每次");
+  priceRow("secWash","wash.large","大型洗衣机","每次");
+  priceRow("secWash","dryer","烘干机","每 6 分钟投币");
+  priceRow("secDrop","drop.lb","代收代洗","每磅");
+  priceRow("secDrop","drop.min","最低消费","不够也按这个收");
+  priceRow("secBed","bed.blanket","毛毯","每件");
+  priceRow("secBed","bed.s","小号被子","每件");
+  priceRow("secBed","bed.m","中号被子","每件");
+  priceRow("secBed","bed.l","大号被子","每件");
+  priceRow("secBed","bed.down","特大被子","每件");
+  priceRow("secDry","dry.from","干洗","每件起");
+
+  /* product rows (names mirror the storefront cards in home.html) */
+  var NAMES = {
+    p01:["Clorox 2 去渍剂","2 oz · 洗一次"],p02:["Xtra 洗衣液","48 loads"],
+    p03:["Gain 洗衣液","25 fl oz"],p04:["Tide 洗衣液","25 fl oz"],
+    p05:["Suavitel 柔顺剂","46 fl oz"],p06:["Suavitel 柔顺剂","850 ml"],
+    p07:["Downy 柔顺剂","19 fl oz"],p08:["Downy 柔顺剂","10 fl oz"],
+    p09:["Ariel 洗衣粉","8 oz"],p10:["Tide 洗衣凝珠","单颗 $1"],
+    p11:["Bounce 烘衣纸","15 张"],p12:["Suavitel 烘衣纸","20 张"],
+    p13:["Tide 洗衣液","32 fl oz"],p14:["Clorox 漂白水","大瓶"],
+    p15:["Clorox 漂白水","11 fl oz"],p16:["Gain 洗衣液","10 fl oz"],
+    p17:["绿色洗衣袋","可重复使用"]
+  };
+  var list = document.getElementById("prodList");
+  D.products.forEach(function(p){
+    var meta = NAMES[p.id] || [p.id, ""];
+    var row = document.createElement("div");
+    row.className = "prod"; row.dataset.pid = p.id;
+    row.innerHTML = '<img src="images/shop/'+p.id+'.jpg" alt="" loading="lazy">'
+      + '<div class="nm"><b>'+meta[0]+'</b><small>'+meta[1]+'</small></div>'
+      + '<span class="money"><b>$</b><input type="number" data-pp step="0.01" min="0" max="99999"></span>'
+      + '<button class="switch" aria-checked="true" aria-label="上下架"></button>'
+      + '<span class="stxt on">上架中</span>';
+    list.appendChild(row);
+    row.querySelector(".switch").addEventListener("click", function(){
+      var on = this.getAttribute("aria-checked") !== "true";
+      this.setAttribute("aria-checked", on ? "true" : "false");
+      var t = row.querySelector(".stxt");
+      t.textContent = on ? "上架中" : "已下架";
+      t.className = "stxt " + (on ? "on" : "off");
+      save(false);
+    });
+  });
+
+  /* fill current values */
+  document.querySelectorAll("input[data-pkey]").forEach(function(el){ el.value = C.prices[el.dataset.pkey]; });
+  document.querySelectorAll(".prod[data-pid]").forEach(function(row){
+    var p = C.getProduct(row.dataset.pid);
+    if(!p) return;
+    row.querySelector("input[data-pp]").value = p.price;
+    var sw = row.querySelector(".switch"), t = row.querySelector(".stxt");
+    sw.setAttribute("aria-checked", p.visible ? "true" : "false");
+    t.textContent = p.visible ? "上架中" : "已下架";
+    t.className = "stxt " + (p.visible ? "on" : "off");
+  });
+  function refreshWmin(){
+    var el = document.getElementById("wminHint");
+    if(el && window.UTOPIA_CFG) el.textContent = UTOPIA_CFG.wmin();
+  }
+  refreshWmin();
+
+  /* reset */
+  document.getElementById("btnReset").addEventListener("click", function(){
+    if(!confirm("确定恢复全部默认价格、上架所有商品吗？")) return;
+    try{ localStorage.removeItem("utopia_cfg_v1"); }catch(e){}
+    location.reload();
+  });
+
+  /* export a publishable copy of config.js (keep in sync with config.js loader) */
+  var LOADER = "(function(){\n"
+    + '  var KEY = "utopia_cfg_v1", D = window.UTOPIA_DEFAULTS;\n'
+    + "  function num(v, fb){ v = parseFloat(v); return (isFinite(v) && v >= 0 && v <= 99999) ? Math.round(v*100)/100 : fb; }\n"
+    + "  function load(){\n"
+    + '    try{ var o = JSON.parse(localStorage.getItem(KEY) || "{}"); return (o && typeof o === "object") ? o : {}; }\n'
+    + "    catch(e){ return {}; }\n"
+    + "  }\n"
+    + "  var over = load(), prices = {}, k;\n"
+    + "  for(k in D.prices){ prices[k] = num(over.prices && over.prices[k], D.prices[k]); }\n"
+    + "  var products = D.products.map(function(p){\n"
+    + "    var o = (over.products && over.products[p.id]) || {};\n"
+    + "    var vis = (o.visible !== undefined) ? o.visible !== false : p.visible !== false;\n"
+    + '    return {id:p.id, cat:p.cat, price:num(o.price, D.prices["shop."+p.id]), visible:vis};\n'
+    + "  });\n"
+    + "  function money(n){ return \"$\"+(+n).toFixed(2); }\n"
+    + "  window.UTOPIA_CFG = {\n"
+    + "    prices: prices,\n"
+    + "    products: products,\n"
+    + "    money: money,\n"
+    + "    wmin: function(){\n"
+    + '      var r = +(prices["drop.lb"] || 1.1); if(!(r > 0)) r = 1.1;\n'
+    + '      return Math.max(1, Math.floor((+prices["drop.min"] || 12) / r));\n'
+    + "    },\n"
+    + "    getPrice: function(path){\n"
+    + "      if(prices[path] !== undefined) return prices[path];\n"
+    + '      var m = /^shop\\.(p\\d\\d)$/.exec(path || "");\n'
+    + "      if(m){ var p = this.getProduct(m[1]); return p ? p.price : null; }\n"
+    + "      return null;\n"
+    + "    },\n"
+    + "    getProduct: function(id){\n"
+    + "      for(var i=0;i<products.length;i++) if(products[i].id===id) return products[i];\n"
+    + "      return null;\n"
+    + "    }\n"
+    + "  };\n"
+    + "})();\n";
+  document.getElementById("btnExport").addEventListener("click", function(){
+    var data = collect();
+    var full = {};
+    for(var k in D.prices) full[k] = data.prices[k];
+    var prods = D.products.map(function(p){
+      var cur = null;
+      for(var i=0;i<data.products.length;i++) if(data.products[i].id===p.id) cur = data.products[i];
+      return {id:p.id, cat:p.cat};
+    });
+    var text = "/* Utopia Laundromat — live store config: prices + product visibility.\n"
+      + "   Exported from admin.html. Upload to replace config.js to publish. */\n"
+      + "window.UTOPIA_DEFAULTS = "
+      + JSON.stringify({prices:full, products:prods.map(function(p){
+          var cur = null;
+          for(var i=0;i<data.products.length;i++) if(data.products[i].id===p.id) cur = data.products[i];
+          return {id:p.id, cat:p.cat, price:cur?cur.price:0, visible:cur?cur.visible:true};
+        })}, null, 2)
+      + ";\n" + LOADER;
+    // loader reads price from D.prices["shop."+id]; exported products carry price too (harmless mirror)
+    var blob = new Blob([text], {type:"text/javascript"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "config.js";
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    toast("已导出 ✓ 发给管理员覆盖上传");
+  });
+})();
+</script>
+</body>
+</html>

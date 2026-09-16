@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utopia Laundromat Inc. – Whitestone, NY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+:root {
+  --blue: #1a3a6e;
+  --blue-dark: #0f2347;
+  --blue-mid: #1e4080;
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
+  --white: #ffffff;
+  --off-white: #f5f7fa;
+  --gray: #666;
+  --light-gray: #e8ecf2;
+  --text: #222;
+}
+
+body {
+  font-family: 'Open Sans', 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  background: #fff;
+}
+
+/* ── LANG BAR ── */
+#lang-bar {
+  background: var(--blue-dark);
+  padding: 8px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.lang-btn:hover, .lang-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--blue-dark);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--blue-dark);
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+header img.logo {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+.header-text {
+  flex: 1;
+  min-width: 0;
+}
+.header-text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(17px, 4vw, 40px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.header-text .tagline {
+  color: var(--gold-light);
+  font-size: clamp(13px, 2.2vw, 18px);
+  font-weight: 600;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── HERO BANNER ── */
+.hero-banner {
+  position: relative;
+  height: clamp(260px, 45vw, 520px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .hero-banner {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+.hero-banner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10,25,60,0.72) 0%, rgba(10,25,60,0.35) 60%, rgba(10,25,60,0.15) 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+}
+.hero-banner-text {
+  max-width: 560px;
+}
+.hero-banner-text h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(22px, 4vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+.hero-banner-text h2 span { color: var(--gold-light); }
+.hero-pills {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pill {
+  background: var(--gold);
+  color: var(--blue-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── INFO STRIP ── */
+.info-strip {
+  background: var(--blue);
+  color: #fff;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.info-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  min-width: 200px;
+  justify-content: flex-start;
+  text-align: left;
+}
+.info-strip-item:last-child { border-right: none; }
+.info-strip-item .icon { font-size: 24px; flex-shrink: 0; }
+.info-strip-item strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 2px; }
+.info-strip-item span { font-size: 14px; line-height: 1.4; color: rgba(255,255,255,0.9); }
+.info-strip-item a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.info-strip-item a:hover { color: var(--gold-light); text-decoration: underline; }
+
+/* ── SECTION COMMON ── */
+section { padding: 64px 24px; }
+.container { max-width: 1060px; margin: 0 auto; }
+.section-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 8px;
+}
+h2.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900;
+  color: var(--blue-dark);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.rule {
+  width: 50px; height: 4px;
+  background: var(--gold);
+  margin-bottom: 32px;
+  border-radius: 2px;
+}
+p.body-text {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+/* ── SERVICES ── */
+#services { background: var(--off-white); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+.svc-card {
+  background: #fff;
+  border: 2px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 32px 28px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.svc-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 32px rgba(26,58,110,0.12);
+}
+.svc-icon { font-size: 32px; display: inline; margin-right: 10px; vertical-align: middle; }
+.svc-card h3 { display: inline; vertical-align: middle; }
+.svc-card-title { display: flex; align-items: center; margin-bottom: 14px; }
+.svc-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  margin-bottom: 0;
+}
+.svc-card p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.price-tag {
+  display: inline-block;
+  background: var(--blue-dark);
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 20px;
+  border-radius: 5px;
+}
+
+/* ── PRICING ── */
+#pricing { background: #fff; }
+.tab-row {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--blue);
+  border-radius: 6px;
+  overflow: hidden;
+  width: fit-content;
+  margin-bottom: 36px;
+}
+.tab-btn {
+  background: #fff;
+  border: none;
+  color: var(--blue);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 11px 26px;
+  cursor: pointer;
+  border-right: 2px solid var(--blue);
+  transition: all 0.2s;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn.active, .tab-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+.tab-pane { display: none; }
+.tab-pane.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* Self-service machines */
+.machine-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.machine-box {
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--off-white);
+}
+.machine-box .mb-icon { font-size: 32px; margin-bottom: 10px; }
+.machine-box .mb-label { font-size: 13px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 600; }
+.machine-box .mb-price { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 900; color: var(--blue-dark); }
+.machine-box .mb-unit { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+/* Drop-off summary bar */
+.do-bar {
+  background: var(--blue-dark);
+  color: #fff;
+  border-radius: 8px;
+  padding: 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.do-bar .do-stat { text-align: center; }
+.do-bar .do-stat .big { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: var(--gold-light); line-height: 1; }
+.do-bar .do-stat .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin-top: 4px; }
+.do-bar .vr { width: 1px; height: 54px; background: rgba(255,255,255,0.2); }
+.do-bar .do-note { flex:1; min-width: 220px; font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+
+/* Drop-off full table */
+.do-table-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
+}
+.do-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 460px;
+}
+.do-table-wrap thead {
+  background: var(--blue);
+  position: sticky; top: 0;
+}
+.do-table-wrap th {
+  padding: 12px 18px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.do-table-wrap td {
+  padding: 9px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--text);
+}
+.do-table-wrap tr:nth-child(even) td { background: #f9fafc; }
+.do-table-wrap tr:hover td { background: #eef2f9; }
+.do-table-wrap tr.min-row td { font-weight: 700; color: var(--blue-dark); background: #eef2ff; }
+
+/* Special items */
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+.special-box {
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--off-white);
+}
+.special-box .sb-name { font-size: 14px; color: var(--text); font-weight: 500; }
+.special-box .sb-price { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue-dark); font-size: 15px; }
+
+/* Dry cleaning grid */
+.dc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+}
+.dc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  background: var(--off-white);
+  transition: background 0.2s;
+}
+.dc-row:hover { background: #e8f0ff; }
+.dc-row .dc-name { font-size: 14px; color: var(--text); }
+.dc-row .dc-price { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue-dark); }
+.dc-note { margin-top: 18px; font-size: 13px; color: var(--gray); font-style: italic; text-align: center; }
+
+/* ── HOW IT WORKS ── */
+#how { background: var(--blue-dark); }
+#how h2.section-title { color: #fff; }
+#how .section-eyebrow { color: var(--gold-light); }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 8px;
+}
+.step {
+  text-align: center;
+}
+.step-num {
+  width: 58px; height: 58px;
+  background: var(--gold);
+  color: var(--blue-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+}
+.step h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.step p { color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.65; }
+
+/* ── STORE SECTION ── */
+#store { background: var(--off-white); }
+.store-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media(max-width:720px) { .store-layout { grid-template-columns: 1fr; } }
+.store-img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.store-info p { color: var(--gray); font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
+
+/* ── HOURS & CONTACT ── */
+#contact { background: #fff; }
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+@media(max-width:720px) { .contact-layout { grid-template-columns: 1fr; gap: 40px; } }
+.hours-list { border: 2px solid var(--light-gray); border-radius: 8px; overflow: hidden; }
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--light-gray);
+  font-size: 14px;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row .day { color: var(--text); font-weight: 600; }
+.hours-row .day.today { color: var(--blue-mid); font-weight: 800; }
+.hours-row .time { color: var(--gray); }
+.hours-note { font-size: 12px; color: var(--gray); margin-top: 12px; font-style: italic; }
+.contact-items { display: flex; flex-direction: column; gap: 20px; }
+.c-item { display: flex; gap: 16px; align-items: flex-start; }
+.c-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: var(--blue-dark); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff;
+}
+.c-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 3px; }
+.c-value { font-size: 15px; color: var(--text); }
+.c-value a { color: var(--blue-mid); text-decoration: none; font-weight: 600; }
+.c-value a:hover { text-decoration: underline; }
+.map-wrap {
+  margin-top: 28px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--light-gray);
+}
+.map-wrap iframe { display: block; width: 100%; height: 230px; border: none; }
+.btn-call {
+  display: inline-block;
+  background: var(--blue-dark);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  padding: 15px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 24px;
+  transition: background 0.2s;
+}
+.btn-call:hover { background: var(--blue-mid); }
+
+
+
+/* ── CAREER ── */
+#career { background: var(--off-white); }
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.career-card {
+  background: #fff;
+  border: 2px solid var(--light-gray);
+  border-radius: 10px;
+  padding: 30px 28px;
+  box-shadow: 0 8px 28px rgba(26,58,110,0.06);
+}
+.career-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 10px 32px rgba(26,58,110,0.12);
+}
+.career-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.career-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--blue-dark);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.career-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  line-height: 1.3;
+}
+.career-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.career-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.career-list li:last-child { margin-bottom: 0; }
+.career-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+  font-weight: 900;
+}
+.career-cta {
+  margin-top: 34px;
+  background: var(--blue-dark);
+  border-radius: 10px;
+  padding: 24px 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.career-cta-text {
+  color: rgba(255,255,255,0.88);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 680px;
+}
+.career-cta-text strong {
+  display: block;
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+
+/* ── LUCKY DRAW ── */
+#lottery { background: #fff; }
+.lottery-wrap {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+  align-items: start;
+}
+@media(max-width:860px) { .lottery-wrap { grid-template-columns: 1fr; } }
+.lottery-main {
+  background: var(--off-white);
+  border: 2px solid var(--light-gray);
+  border-radius: 12px;
+  padding: 32px 30px;
+}
+.lottery-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue-dark);
+  color: var(--gold-light);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.lottery-main p {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+.lottery-rules {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lottery-rules li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.lottery-rules li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+  font-size: 12px;
+}
+.lottery-side {
+  background: var(--blue-dark);
+  color: #fff;
+  border-radius: 12px;
+  padding: 30px 28px;
+}
+.lottery-side h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.lottery-side p {
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.lucky-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+.lucky-box {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 8px;
+  text-align: center;
+  padding: 14px 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold-light);
+}
+.lottery-note {
+  background: rgba(255,255,255,0.08);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.88);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--blue-dark);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 36px 24px;
+  font-size: 13px;
+}
+footer img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; display: block; margin: 0 auto 12px; }
+footer .fname { color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; margin-bottom: 8px; }
+
+/* ── LANG SWITCH ── */
+.t { display: none; }
+.t.on { display: inline; }
+.tb { display: none; }
+.tb.on { display: block; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px) {
+  .info-strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); width: 100%; justify-content: flex-start; padding-left: 24px; }
+  .tab-btn { padding: 10px 14px; font-size: 11px; }
+  .do-bar { flex-direction: column; text-align: center; }
+  .do-bar .vr { width: 80%; height: 1px; }
+  .hero-banner-text h2 { font-size: 20px; }
+  header { padding: 14px 16px; gap: 12px; flex-wrap: nowrap; align-items: center; }
+  header img.logo { width: 54px; height: 54px; min-width: 54px; }
+  .header-text h1 { font-size: clamp(15px, 4.5vw, 24px); white-space: nowrap; }
+  .header-text .tagline { font-size: clamp(11px, 2.8vw, 15px); white-space: nowrap; }
+}
+@media(max-width:400px) {
+  header img.logo { width: 44px; height: 44px; min-width: 44px; }
+  .header-text h1 { font-size: 13px; }
+  .header-text .tagline { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div id="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('es')">Español</button>
+  <button class="lang-btn" onclick="setLang('zh')">中文</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <img class="logo" src="images/logo.jpg" alt="Utopia Laundromat Logo">
+  <div class="header-text">
+    <h1>UTOPIA LAUNDROMAT INC.</h1>
+    <div class="tagline">
+      <span class="t on" id="tl-en">Your Neighborhood Laundromat in Whitestone, NY</span>
+      <span class="t" id="tl-es">Su Lavandería de Confianza en Whitestone, NY</span>
+      <span class="t" id="tl-zh">纽约白石镇您身边的专业洗衣店</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO BANNER -->
+<div class="hero-banner" style="position:relative;overflow:hidden;">
+  <!-- 轮播图片层 -->
+  <div id="heroSlider" style="display:flex;width:100%;height:100%;transition:transform 0.6s ease;position:absolute;top:0;left:0;">
+    <img src="images/1.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 1">
+    <img src="images/2.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 2">
+    <img src="images/3.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 3">
+    <img src="images/4.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 4">
+    <img src="images/5.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 5">
+    <img src="images/6.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 6">
+    <img src="images/7.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 7">
+    <img src="images/8.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 8">
+    <img src="images/9.jpg"  style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 9">
+    <img src="images/10.jpg" style="min-width:100%;height:100%;object-fit:cover;object-position:center;flex-shrink:0;" alt="Utopia Laundromat 10">
+  </div>
+  <!-- 顶部公告跑马灯 -->
+  <div style="position:absolute;top:0;left:0;right:0;z-index:10;background:rgba(10,25,60,0.55);backdrop-filter:blur(2px);overflow:hidden;height:32px;display:flex;align-items:center;">
+    <div id="heroMarquee" style="display:flex;align-items:center;white-space:nowrap;animation:marqueeScroll 18s linear infinite;">
+      <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;padding:0 40px;">
+        <span style="color:var(--gold-light);" class="t on" id="ann-gift-en">🎁 Prepaid Card &amp; Gift Certificate Available</span>
+        <span style="color:var(--gold-light);" class="t" id="ann-gift-es">🎁 Tarjeta Prepagada y Certificado de Regalo Disponibles</span>
+        <span style="color:var(--gold-light);" class="t" id="ann-gift-zh">🎁 预付卡与礼品券现已推出</span>
+      </span>
+      <span style="color:rgba(255,255,255,0.4);padding:0 8px;">|</span>
+      <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;padding:0 40px;">
+        <span style="color:#fff;" class="t on" id="ann-welcome-en">👑 Welcome to all new royal customers!</span>
+        <span style="color:#fff;" class="t" id="ann-welcome-es">👑 ¡Bienvenidos a todos los nuevos clientes distinguidos!</span>
+        <span style="color:#fff;" class="t" id="ann-welcome-zh">👑 欢迎所有新的尊贵客户的到来！</span>
+      </span>
+      <span style="color:rgba(255,255,255,0.4);padding:0 8px;">|</span>
+      <!-- 复制一遍实现无缝循环 -->
+      <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;padding:0 40px;">
+        <span style="color:var(--gold-light);" class="t on" id="ann-gift2-en">🎁 Prepaid Card &amp; Gift Certificate Available</span>
+        <span style="color:var(--gold-light);" class="t" id="ann-gift2-es">🎁 Tarjeta Prepagada y Certificado de Regalo Disponibles</span>
+        <span style="color:var(--gold-light);" class="t" id="ann-gift2-zh">🎁 预付卡与礼品券现已推出</span>
+      </span>
+      <span style="color:rgba(255,255,255,0.4);padding:0 8px;">|</span>
+      <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.07em;padding:0 40px;">
+        <span style="color:#fff;" class="t on" id="ann-welcome2-en">👑 Welcome to all new royal customers!</span>
+        <span style="color:#fff;" class="t" id="ann-welcome2-es">👑 ¡Bienvenidos a todos los nuevos clientes distinguidos!</span>
+        <span style="color:#fff;" class="t" id="ann-welcome2-zh">👑 欢迎所有新的尊贵客户的到来！</span>
+      </span>
+      <span style="color:rgba(255,255,255,0.4);padding:0 8px;">|</span>
+    </div>
+  </div>
+  <!-- 左右箭头 -->
+  <button onclick="heroSlide(-1)" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(0,0,0,0.45);color:#fff;border:none;font-size:24px;width:44px;height:44px;border-radius:50%;cursor:pointer;line-height:1;">&#8592;</button>
+  <button onclick="heroSlide(1)"  style="position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:10;background:rgba(0,0,0,0.45);color:#fff;border:none;font-size:24px;width:44px;height:44px;border-radius:50%;cursor:pointer;line-height:1;">&#8594;</button>
+  <!-- 底部圆点 -->
+  <div id="heroDots" style="position:absolute;bottom:42px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px;"></div>
+  <!-- 底部信息条 -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:10;background:rgba(10,25,60,0.35);backdrop-filter:blur(2px);padding:8px 20px;display:flex;justify-content:center;align-items:center;gap:0;">
+    <span style="color:rgba(255,255,255,0.92);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">
+      <span class="t on" id="banner-en">✦ Self-Service &nbsp;·&nbsp; Drop-Off &nbsp;·&nbsp; Dry Cleaning &nbsp;·&nbsp; Open 7 Days</span>
+      <span class="t" id="banner-es">✦ Autoservicio &nbsp;·&nbsp; Drop-Off &nbsp;·&nbsp; Lavado en Seco &nbsp;·&nbsp; Abierto 7 Días</span>
+      <span class="t" id="banner-zh">✦ 自助洗衣 &nbsp;·&nbsp; 代收代洗 &nbsp;·&nbsp; 专业干洗 &nbsp;·&nbsp; 全周营业</span>
+    </span>
+  </div>
+
+</div>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-strip-item">
+    <div class="icon">📍</div>
+    <div>
+      <strong><span class="t on" id="is1-en">Store Address</span><span class="t" id="is1-es">Dirección de la Tienda</span><span class="t" id="is1-zh">店铺地址</span></strong>
+      <span>17-08 Utopia Pkwy<br>Whitestone, NY 11357</span>
+    </div>
+  </div>
+  <div class="info-strip-item">
+    <div class="icon">📞</div>
+    <div>
+      <strong><span class="t on" id="is2-en">Customer Service Phone &amp; Email</span><span class="t" id="is2-es">Teléfono y Correo de Atención al Cliente</span><span class="t" id="is2-zh">客户服务电话和电子邮箱</span></strong>
+      <span><a href="tel:7183527622">718-352-7622</a><br><a href="mailto:utopiaLaundromat@gmail.com">utopiaLaundromat@gmail.com</a></span>
+    </div>
+  </div>
+  <div class="info-strip-item">
+    <div class="icon">🕐</div>
+    <div>
+      <strong><span class="t on" id="is3-en">Business Hours</span><span class="t" id="is3-es">Horario</span><span class="t" id="is3-zh">营业时间</span></strong>
+      <span>
+        <span class="t on" id="is3v-en">Mon–Sat 7:30am–7:00pm<br>Sun 7:30am–6:00pm<br>* Closed on most major holidays.</span>
+        <span class="t" id="is3v-es">Lun–Sáb 7:30am–7:00pm<br>Dom 7:30am–6:00pm<br>* Cerrado en la mayoría de días festivos importantes.</span>
+        <span class="t" id="is3v-zh">周一至周六 7:30am–7:00pm<br>周日 7:30am–6:00pm<br>* 大多数重要节假日休息。</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="sv-ey-en">What We Offer</span><span class="t" id="sv-ey-es">Nuestros Servicios</span><span class="t" id="sv-ey-zh">服务项目</span></div>
+    <h2 class="section-title"><span class="t on" id="sv-tt-en">Three Services, One Location</span><span class="t" id="sv-tt-es">Tres Servicios, Un Solo Lugar</span><span class="t" id="sv-tt-zh">三大服务，一站搞定</span></h2>
+    <div class="rule"></div>
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <div class="svc-card-title"><span class="svc-icon">🌀</span><h3><span class="t on" id="s1h-en">Self-Service Laundry</span><span class="t" id="s1h-es">Lavandería de Autoservicio</span><span class="t" id="s1h-zh">自助洗衣</span></h3></div>
+        <p><span class="t on" id="s1p-en">Use our coin-operated washers and dryers at your own pace. Multiple machine sizes available. Fast, convenient, and affordable.</span><span class="t" id="s1p-es">Use nuestras lavadoras y secadoras de monedas a su ritmo. Varias tallas de máquinas disponibles. Rápido, conveniente y accesible.</span><span class="t" id="s1p-zh">自助投币洗衣机和烘干机，随到随用，多种机型尺寸，快捷方便实惠。</span></p>
+        <div class="price-tag"><span class="t on" id="s1pr-en">$3.00 / $6.00 / $8.25 Wash &nbsp;·&nbsp; $0.25/6 minutes</span><span class="t" id="s1pr-es">$3.00 / $6.00 / $8.25 Lavada &nbsp;·&nbsp; $0.25/6 minutos</span><span class="t" id="s1pr-zh">洗衣 $3.00/$6.00/$8.25 · 烘干 $0.25/6分钟</span></div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-title"><span class="svc-icon">📦</span><h3><span class="t on" id="s2h-en">Drop-Off Service</span><span class="t" id="s2h-es">Servicio Drop-Off</span><span class="t" id="s2h-zh">代收代洗服务</span></h3></div>
+        <p><span class="t on" id="s2p-en">Drop off your laundry and let our staff handle the rest. Sorted, washed, dried, and neatly folded — ready the same day. Shirts hung on hangers. Minimum 10 lbs.</span><span class="t" id="s2p-es">Deje su ropa y nuestro personal se encarga del resto. Clasificada, lavada, secada y doblada — lista el mismo día. Mínimo 10 lbs.</span><span class="t" id="s2p-zh">把衣物交给我们，员工负责分类、清洗、烘干、折叠，衬衫挂衣架，当天即可取件。最低10磅起。</span></p>
+        <div class="price-tag"><span class="t on" id="s2pr-en">$1.10 / lb &nbsp;·&nbsp; Min. $12.00</span><span class="t" id="s2pr-es">$1.10 / lb &nbsp;·&nbsp; Mín. $12.00</span><span class="t" id="s2pr-zh">$1.10/磅 · 最低 $12.00</span></div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-card-title"><span class="svc-icon">👔</span><h3><span class="t on" id="s3h-en">Professional Dry Cleaning</span><span class="t" id="s3h-es">Lavado en Seco Profesional</span><span class="t" id="s3h-zh">专业干洗服务</span></h3></div>
+        <p><span class="t on" id="s3p-en">Expert dry cleaning for suits, coats, dresses, and delicate garments. We treat every piece with care and precision.</span><span class="t" id="s3p-es">Lavado en seco experto para trajes, abrigos, vestidos y prendas delicadas. Tratamos cada pieza con cuidado y precisión.</span><span class="t" id="s3p-zh">专业干洗西装、大衣、礼服及精细衣物，每件都精心处理。</span></p>
+        <div class="price-tag"><span class="t on" id="s3pr-en">From $4.50 per item</span><span class="t" id="s3pr-es">Desde $4.50 por prenda</span><span class="t" id="s3pr-zh">每件 $4.50 起</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="pr-ey-en">Clear &amp; Transparent</span><span class="t" id="pr-ey-es">Claro y Transparente</span><span class="t" id="pr-ey-zh">明码实价</span></div>
+    <h2 class="section-title"><span class="t on" id="pr-tt-en">Store Price List</span><span class="t" id="pr-tt-es">Lista de precios de la tienda</span><span class="t" id="pr-tt-zh">店内收费价格表</span></h2>
+    <div class="rule"></div>
+
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="switchTab('self',this)"><span class="t on" id="tb1-en">Self-Service</span><span class="t" id="tb1-es">Autoservicio</span><span class="t" id="tb1-zh">自助洗衣</span></button>
+      <button class="tab-btn" onclick="switchTab('dropoff',this)"><span class="t on" id="tb2-en">Drop-Off</span><span class="t" id="tb2-es">Drop-Off</span><span class="t" id="tb2-zh">代收代洗</span></button>
+      <button class="tab-btn" onclick="switchTab('dry',this)"><span class="t on" id="tb3-en">Dry Cleaning</span><span class="t" id="tb3-es">Lavado en Seco</span><span class="t" id="tb3-zh">干洗</span></button>
+    </div>
+
+    <!-- Self-service -->
+    <div class="tab-pane active" id="tab-self">
+      <div class="machine-row">
+        <div class="machine-box"><div class="mb-icon">🔵</div><div class="mb-label"><span class="t on" id="mb1-en">Small Washer</span><span class="t" id="mb1-es">Lavadora Pequeña</span><span class="t" id="mb1-zh">小型洗衣机</span></div><div class="mb-price">$3.00</div><div class="mb-unit"><span class="t on" id="mu1-en">per wash</span><span class="t" id="mu1-es">por lavada</span><span class="t" id="mu1-zh">每次</span></div></div>
+        <div class="machine-box"><div class="mb-icon">🟡</div><div class="mb-label"><span class="t on" id="mb2-en">Medium Washer</span><span class="t" id="mb2-es">Lavadora Mediana</span><span class="t" id="mb2-zh">中型洗衣机</span></div><div class="mb-price">$6.00</div><div class="mb-unit"><span class="t on" id="mu2-en">per wash</span><span class="t" id="mu2-es">por lavada</span><span class="t" id="mu2-zh">每次</span></div></div>
+        <div class="machine-box"><div class="mb-icon">🔴</div><div class="mb-label"><span class="t on" id="mb3-en">Large Washer</span><span class="t" id="mb3-es">Lavadora Grande</span><span class="t" id="mb3-zh">大型洗衣机</span></div><div class="mb-price">$8.25</div><div class="mb-unit"><span class="t on" id="mu3-en">per wash</span><span class="t" id="mu3-es">por lavada</span><span class="t" id="mu3-zh">每次</span></div></div>
+        <div class="machine-box"><div class="mb-icon">♨️</div><div class="mb-label"><span class="t on" id="mb4-en">Dryer</span><span class="t" id="mb4-es">Secadora</span><span class="t" id="mb4-zh">烘干机</span></div><div class="mb-price">$0.25</div><div class="mb-unit"><span class="t on" id="mu4-en">per cycle</span><span class="t" id="mu4-es">por ciclo</span><span class="t" id="mu4-zh">每次投币</span></div></div>
+      </div>
+    </div>
+
+    <!-- Drop-off -->
+    <div class="tab-pane" id="tab-dropoff">
+      <div class="do-bar">
+        <div class="do-stat"><div class="big">$1.10</div><div class="lbl"><span class="t on" id="do1-en">per pound</span><span class="t" id="do1-es">por libra</span><span class="t" id="do1-zh">每磅</span></div></div>
+        <div class="vr"></div>
+        <div class="do-stat"><div class="big">$12.00</div><div class="lbl"><span class="t on" id="do2-en">minimum (10 lbs)</span><span class="t" id="do2-es">mínimo (10 lbs)</span><span class="t" id="do2-zh">最低消费 (10磅)</span></div></div>
+        <div class="vr"></div>
+        <div class="do-note"><span class="t on" id="do3-en">Sorted · Washed · Dried · Folded. Shirts carefully hung on hangers. Same day service available. Drop off before noon for best results.</span><span class="t" id="do3-es">Clasificada · Lavada · Secada · Doblada. Camisas cuidadosamente colgadas. Servicio el mismo día disponible.</span><span class="t" id="do3-zh">分类 · 清洗 · 烘干 · 折叠。衬衫单独挂架。支持当日取件，中午前送达效果最佳。</span></div>
+      </div>
+      <div class="do-table-wrap">
+        <table>
+          <thead><tr>
+            <th><span class="t on" id="dth1-en">Weight (lbs)</span><span class="t" id="dth1-es">Peso (lbs)</span><span class="t" id="dth1-zh">重量（磅）</span></th>
+            <th><span class="t on" id="dth2-en">Price</span><span class="t" id="dth2-es">Precio</span><span class="t" id="dth2-zh">价格</span></th>
+            <th><span class="t on" id="dth3-en">Weight (lbs)</span><span class="t" id="dth3-es">Peso (lbs)</span><span class="t" id="dth3-zh">重量（磅）</span></th>
+            <th><span class="t on" id="dth4-en">Price</span><span class="t" id="dth4-es">Precio</span><span class="t" id="dth4-zh">价格</span></th>
+          </tr></thead>
+          <tbody id="do-tbody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:28px">
+        <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:var(--blue-dark);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px">
+          <span class="t on" id="sp-en">Blankets &amp; Comforters</span><span class="t" id="sp-es">Mantas y Edredones</span><span class="t" id="sp-zh">毛毯及被子</span>
+        </div>
+        <div class="special-grid">
+          <div class="special-box"><span class="sb-name"><span class="t on" id="sbn1-en">Blanket</span><span class="t" id="sbn1-es">Manta</span><span class="t" id="sbn1-zh">毛毯</span></span><span class="sb-price">$16.00</span></div>
+          <div class="special-box"><span class="sb-name"><span class="t on" id="sbn2-en">Small Comforter</span><span class="t" id="sbn2-es">Edredón Pequeño</span><span class="t" id="sbn2-zh">小号被子</span></span><span class="sb-price">$16.00</span></div>
+          <div class="special-box"><span class="sb-name"><span class="t on" id="sbn3-en">Medium Comforter</span><span class="t" id="sbn3-es">Edredón Mediano</span><span class="t" id="sbn3-zh">中号被子</span></span><span class="sb-price">$18.00</span></div>
+          <div class="special-box"><span class="sb-name"><span class="t on" id="sbn4-en">Large Comforter</span><span class="t" id="sbn4-es">Edredón Grande</span><span class="t" id="sbn4-zh">大号被子</span></span><span class="sb-price">$20.00</span></div>
+          <div class="special-box"><span class="sb-name"><span class="t on" id="sbn5-en">Down Comforter</span><span class="t" id="sbn5-es">Edredón Doble</span><span class="t" id="sbn5-zh">特大号被子</span></span><span class="sb-price">$22.00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dry Cleaning -->
+    <div class="tab-pane" id="tab-dry">
+      <div class="dc-grid" id="dc-grid"></div>
+      <p class="dc-note"><span class="t on" id="dc-note-en">★ Prices may vary depending on material or garment size.</span><span class="t" id="dc-note-es">★ Los precios pueden variar según el material o el tamaño de la prenda.</span><span class="t" id="dc-note-zh">★ 价格因面料材质或衣物尺寸而有所不同，最终以实际为准。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="hw-ey-en">Simple Process</span><span class="t" id="hw-ey-es">Proceso Simple</span><span class="t" id="hw-ey-zh">服务流程</span></div>
+    <h2 class="section-title"><span class="t on" id="hw-tt-en">How Drop-Off Works</span><span class="t" id="hw-tt-es">Cómo Funciona el Drop-Off</span><span class="t" id="hw-tt-zh">代洗服务怎么用？</span></h2>
+    <div class="rule"></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h4><span class="t on" id="st1t-en">Bring Your Laundry</span><span class="t" id="st1t-es">Trae tu Ropa</span><span class="t" id="st1t-zh">送来衣物</span></h4><p><span class="t on" id="st1d-en">Walk in during business hours. We'll weigh your items and give you a price right away.</span><span class="t" id="st1d-es">Entra durante el horario comercial. Pesaremos tus prendas y te daremos un precio de inmediato.</span><span class="t" id="st1d-zh">营业时间内将衣物送来，当场称重报价。</span></p></div>
+      <div class="step"><div class="step-num">2</div><h4><span class="t on" id="st2t-en">We Take Care of It</span><span class="t" id="st2t-es">Nos Encargamos</span><span class="t" id="st2t-zh">我们全程处理</span></h4><p><span class="t on" id="st2d-en">Our staff sorts, washes, dries, and folds everything. Shirts hung neatly on hangers.</span><span class="t" id="st2d-es">Nuestro personal clasifica, lava, seca y dobla todo. Las camisas se cuelgan en perchas.</span><span class="t" id="st2d-zh">员工负责分类、清洗、烘干、折叠，衬衫单独挂架。</span></p></div>
+      <div class="step"><div class="step-num">3</div><h4><span class="t on" id="st3t-en">Pick Up Same Day</span><span class="t" id="st3t-es">Recoge el Mismo Día</span><span class="t" id="st3t-zh">当天取件</span></h4><p><span class="t on" id="st3d-en">Your laundry is ready the same day — clean, fresh, and neatly packaged.</span><span class="t" id="st3d-es">Tu ropa estará lista el mismo día — limpia, fresca y bien empaquetada.</span><span class="t" id="st3d-zh">当天取件，干净整洁，打包妥当。</span></p></div>
+      <div class="step"><div class="step-num">4</div><h4><span class="t on" id="st4t-en">Enjoy Your Time</span><span class="t" id="st4t-es">Disfruta tu Tiempo</span><span class="t" id="st4t-zh">省时省力</span></h4><p><span class="t on" id="st4d-en">No more wasting your day on laundry. Let us handle it so you can focus on what matters.</span><span class="t" id="st4d-es">No más horas perdidas lavando. Déjanos encargarnos y enfócate en lo que importa.</span><span class="t" id="st4d-zh">不用再为洗衣耽误时间，把时间留给更重要的事。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMERCIAL PICKUP & DELIVERY -->
+<section id="commercial" style="background: var(--blue-dark);">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--gold-light);">
+      <span class="t on" id="cm-ey-en">For Businesses</span>
+      <span class="t" id="cm-ey-es">Para Empresas</span>
+      <span class="t" id="cm-ey-zh">企业客户专属</span>
+    </div>
+    <h2 class="section-title" style="color:#fff;">
+      <span class="t on" id="cm-tt-en">Commercial Pickup &amp; Delivery Service</span>
+      <span class="t" id="cm-tt-es">Servicio Comercial de Recogida y Entrega</span>
+      <span class="t" id="cm-tt-zh">商业上门取送洗衣服务</span>
+    </h2>
+    <div class="rule"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-bottom:40px;">
+
+      <!-- Left: description -->
+      <div>
+        <p style="color:rgba(255,255,255,0.88);font-size:15px;line-height:1.85;margin-bottom:20px;">
+          <span class="t on" id="cm-p1-en">We offer a full-service commercial laundry solution for businesses with high-volume laundry needs — including restaurants, salons, spas, gyms, hotels, Airbnb hosts, and care facilities. We pick up your laundry, wash and dry everything to your specifications, and deliver it back fresh, folded, and ready to use.</span>
+          <span class="t" id="cm-p1-es">Ofrecemos un servicio completo de lavandería comercial para negocios con grandes volúmenes de ropa — incluyendo restaurantes, salones, spas, gimnasios, hoteles, anfitriones de Airbnb e instalaciones de cuidado. Recogemos su ropa, la lavamos y secamos según sus especificaciones, y la entregamos fresca, doblada y lista para usar.</span>
+          <span class="t" id="cm-p1-zh">我们为有大量洗涤需求的商业客户提供全套上门收送洗衣服务，适合餐厅、美发沙龙、水疗中心、健身房、酒店、Airbnb 房东及各类护理机构。我们上门取衣、按需清洗烘干，完成后整理折叠送货上门，省心省力。</span>
+        </p>
+        <p style="color:rgba(255,255,255,0.88);font-size:15px;line-height:1.85;">
+          <span class="t on" id="cm-p2-en">Flexible scheduling available — daily, weekly, or as needed. Competitive rates for bulk orders. Contact us to set up a custom arrangement for your business.</span>
+          <span class="t" id="cm-p2-es">Horarios flexibles disponibles — diario, semanal o según necesidad. Tarifas competitivas para pedidos al por mayor. Contáctenos para establecer un acuerdo personalizado para su negocio.</span>
+          <span class="t" id="cm-p2-zh">可按需安排取送频率，支持每日、每周或按需预约，量大价优。欢迎联系我们，为您的企业量身定制服务方案。</span>
+        </p>
+      </div>
+
+      <!-- Right: feature cards -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px;">
+          <span style="font-size:28px;flex-shrink:0;">🚐</span>
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--gold-light);margin-bottom:5px;">
+              <span class="t on" id="cm-f1t-en">Free Pickup &amp; Delivery</span>
+              <span class="t" id="cm-f1t-es">Recogida y Entrega Gratis</span>
+              <span class="t" id="cm-f1t-zh">免费上门取送</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;">
+              <span class="t on" id="cm-f1d-en">We come to your location. No need to leave your business.</span>
+              <span class="t" id="cm-f1d-es">Vamos a su ubicación. No necesita salir de su negocio.</span>
+              <span class="t" id="cm-f1d-zh">我们直接上门，您无需离开工作场所。</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px;">
+          <span style="font-size:28px;flex-shrink:0;">📦</span>
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--gold-light);margin-bottom:5px;">
+              <span class="t on" id="cm-f2t-en">Wash · Dry · Fold · Return</span>
+              <span class="t" id="cm-f2t-es">Lavar · Secar · Doblar · Entregar</span>
+              <span class="t" id="cm-f2t-zh">清洗 · 烘干 · 折叠 · 配送</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;">
+              <span class="t on" id="cm-f2d-en">Full-cycle handling — sorted, cleaned, folded, and delivered on schedule.</span>
+              <span class="t" id="cm-f2d-es">Manejo de ciclo completo — clasificado, limpio, doblado y entregado a tiempo.</span>
+              <span class="t" id="cm-f2d-zh">全程包办，分类、清洗、整理、按时送达。</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px;">
+          <span style="font-size:28px;flex-shrink:0;">📅</span>
+          <div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--gold-light);margin-bottom:5px;">
+              <span class="t on" id="cm-f3t-en">Flexible Scheduling</span>
+              <span class="t" id="cm-f3t-es">Horario Flexible</span>
+              <span class="t" id="cm-f3t-zh">灵活预约</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;">
+              <span class="t on" id="cm-f3d-en">Daily, weekly, or custom frequency — tailored to your business rhythm.</span>
+              <span class="t" id="cm-f3d-es">Diario, semanal o frecuencia personalizada — adaptado al ritmo de su negocio.</span>
+              <span class="t" id="cm-f3d-zh">每日、每周或按需安排，完全配合您的经营节奏。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Who it's for -->
+    <div style="margin-bottom:36px;">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px;">
+        <span class="t on" id="cm-wh-en">Ideal For</span>
+        <span class="t" id="cm-wh-es">Ideal Para</span>
+        <span class="t" id="cm-wh-zh">适合行业</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">🍽️ <span class="t on" id="cm-i1-en">Restaurants</span><span class="t" id="cm-i1-es">Restaurantes</span><span class="t" id="cm-i1-zh">餐厅</span></span>
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">💇 <span class="t on" id="cm-i2-en">Salons &amp; Spas</span><span class="t" id="cm-i2-es">Salones y Spas</span><span class="t" id="cm-i2-zh">美容沙龙 / 水疗</span></span>
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">🏋️ <span class="t on" id="cm-i3-en">Gyms &amp; Fitness</span><span class="t" id="cm-i3-es">Gimnasios</span><span class="t" id="cm-i3-zh">健身房</span></span>
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">🏨 <span class="t on" id="cm-i4-en">Hotels &amp; B&amp;Bs</span><span class="t" id="cm-i4-es">Hoteles y B&amp;Bs</span><span class="t" id="cm-i4-zh">酒店 / 民宿</span></span>
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">🏠 <span class="t on" id="cm-i5-en">Airbnb Hosts</span><span class="t" id="cm-i5-es">Anfitriones Airbnb</span><span class="t" id="cm-i5-zh">Airbnb 房东</span></span>
+        <span style="background:rgba(201,168,76,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:13px;font-weight:600;padding:6px 16px;border-radius:20px;">🏥 <span class="t on" id="cm-i6-en">Care Facilities</span><span class="t" id="cm-i6-es">Centros de Cuidado</span><span class="t" id="cm-i6-zh">护理机构</span></span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:28px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#fff;margin-bottom:6px;">
+          <span class="t on" id="cm-ct-en">Ready to set up commercial service?</span>
+          <span class="t" id="cm-ct-es">¿Listo para configurar el servicio comercial?</span>
+          <span class="t" id="cm-ct-zh">准备开通企业洗衣服务？</span>
+        </div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.7);">
+          <span class="t on" id="cm-cs-en">Call or email us to discuss your needs and get a custom quote.</span>
+          <span class="t" id="cm-cs-es">Llámenos o envíenos un correo para discutir sus necesidades y obtener un presupuesto personalizado.</span>
+          <span class="t" id="cm-cs-zh">致电或发邮件告诉我们您的需求，我们将为您提供专属报价。</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <a href="tel:7183527622" style="display:inline-block;background:var(--gold);color:var(--blue-dark);font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:14px 32px;border-radius:6px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e8c96a'" onmouseout="this.style.background='var(--gold)'">
+          <span class="t on" id="cm-btn-en">📞 Call 718-352-7622</span>
+          <span class="t" id="cm-btn-es">📞 Llamar 718-352-7622</span>
+          <span class="t" id="cm-btn-zh">📞 拨打 718-352-7622</span>
+        </a>
+        <button onclick="document.getElementById('partner-modal').style.display='flex'" style="display:inline-block;background:transparent;border:2px solid var(--gold);color:var(--gold-light);font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:13px 28px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.15)'" onmouseout="this.style.background='transparent'">
+          <span class="t on" id="cm-partner-en">🤝 Partner With Us</span>
+          <span class="t" id="cm-partner-es">🤝 Asóciese Con Nosotros</span>
+          <span class="t" id="cm-partner-zh">🤝 立即合作</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER INQUIRY MODAL -->
+<div id="partner-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,20,50,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.35);">
+    <!-- Modal Header -->
+    <div style="background:var(--blue-dark);border-radius:14px 14px 0 0;padding:28px 32px 24px;position:relative;">
+      <button onclick="document.getElementById('partner-modal').style.display='none'" style="position:absolute;top:16px;right:18px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:18px;width:32px;height:32px;border-radius:50%;cursor:pointer;line-height:1;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.28)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">✕</button>
+      <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px;">
+        <span class="t on" id="pm-ey-en">Business Inquiry</span>
+        <span class="t" id="pm-ey-es">Consulta Comercial</span>
+        <span class="t" id="pm-ey-zh">企业合作申请</span>
+      </div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#fff;">
+        <span class="t on" id="pm-tt-en">Start a Partnership</span>
+        <span class="t" id="pm-tt-es">Iniciar una Asociación</span>
+        <span class="t" id="pm-tt-zh">立即开启合作</span>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.65);margin-top:6px;">
+        <span class="t on" id="pm-sub-en">Fill in your details and we'll get back to you shortly.</span>
+        <span class="t" id="pm-sub-es">Complete sus datos y nos pondremos en contacto pronto.</span>
+        <span class="t" id="pm-sub-zh">填写您的信息，我们将尽快与您联系。</span>
+      </div>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:28px 32px 32px;" id="pm-form-area">
+      <div style="display:grid;gap:16px;">
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+            <span class="t on" id="pm-l1-en">Contact Name or Company Name *</span>
+            <span class="t" id="pm-l1-es">Nombre de Contacto o Empresa *</span>
+            <span class="t" id="pm-l1-zh">联系人姓名或公司名称 *</span>
+          </label>
+          <input id="pm-name" type="text" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+            <span class="t on" id="pm-l2-en">Business Type</span>
+            <span class="t" id="pm-l2-es">Tipo de Negocio</span>
+            <span class="t" id="pm-l2-zh">公司类型</span>
+          </label>
+          <input id="pm-type" type="text" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'">
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+            <span class="t on" id="pm-l3-en">Brief Introduction</span>
+            <span class="t" id="pm-l3-es">Breve Descripción</span>
+            <span class="t" id="pm-l3-zh">简介</span>
+          </label>
+          <textarea id="pm-intro" rows="3" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'"></textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+              <span class="t on" id="pm-l4-en">Contact 1 *</span>
+              <span class="t" id="pm-l4-es">Contacto 1 *</span>
+              <span class="t" id="pm-l4-zh">联系方式1 *</span>
+            </label>
+            <input id="pm-contact1" type="text" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'">
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+              <span class="t on" id="pm-l5-en">Contact 2</span>
+              <span class="t" id="pm-l5-es">Contacto 2</span>
+              <span class="t" id="pm-l5-zh">联系方式2</span>
+            </label>
+            <input id="pm-contact2" type="text" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'">
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:6px;">
+            <span class="t on" id="pm-l6-en">Business Address</span>
+            <span class="t" id="pm-l6-es">Dirección del Negocio</span>
+            <span class="t" id="pm-l6-zh">联系地址</span>
+          </label>
+          <input id="pm-address" type="text" style="width:100%;padding:11px 14px;border:2px solid var(--light-gray);border-radius:6px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--light-gray)'">
+        </div>
+      </div>
+      <div id="pm-error" style="display:none;background:#fff3f3;border:1px solid #f5a0a0;border-radius:6px;padding:10px 14px;font-size:13px;color:#c0392b;margin-top:14px;"></div>
+      <div style="display:flex;gap:12px;margin-top:22px;">
+        <button onclick="document.getElementById('partner-modal').style.display='none'" style="flex:1;padding:13px;background:#f0f2f5;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--gray);cursor:pointer;">
+          <span class="t on" id="pm-cancel-en">Cancel</span>
+          <span class="t" id="pm-cancel-es">Cancelar</span>
+          <span class="t" id="pm-cancel-zh">取消</span>
+        </button>
+        <button onclick="sendPartnerEmail()" style="flex:2;padding:13px;background:var(--blue-dark);border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:#fff;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--blue-mid)'" onmouseout="this.style.background='var(--blue-dark)'">
+          <span class="t on" id="pm-send-en">✉️ Send Inquiry</span>
+          <span class="t" id="pm-send-es">✉️ Enviar Consulta</span>
+          <span class="t" id="pm-send-zh">✉️ 一键发送</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORE PHOTOS -->
+<section id="store">
+  <div class="container">
+    <div class="store-layout">
+      <img class="store-img" src="images/1.jpg" alt="Utopia Laundromat storefront">
+      <div class="store-info">
+        <div class="section-eyebrow"><span class="t on" id="st-ey-en">Visit Us</span><span class="t" id="st-ey-es">Visítenos</span><span class="t" id="st-ey-zh">欢迎到店</span></div>
+        <h2 class="section-title"><span class="t on" id="st-tt-en">Find Us in Whitestone</span><span class="t" id="st-tt-es">Encuéntrenos en Whitestone</span><span class="t" id="st-tt-zh">我们在白石镇等您</span></h2>
+        <div class="rule"></div>
+        <p><span class="t on" id="st-p1-en">Utopia Laundromat is conveniently located at 17-08 Utopia Parkway in Whitestone, Queens. We offer self-service machines, professional drop-off laundry, and dry cleaning all under one roof.</span><span class="t" id="st-p1-es">Utopia Laundromat está convenientemente ubicado en 17-08 Utopia Parkway en Whitestone, Queens. Ofrecemos máquinas de autoservicio, servicio drop-off profesional y lavado en seco, todo bajo un mismo techo.</span><span class="t" id="st-p1-zh">Utopia Laundromat 坐落于皇后区白石镇 Utopia Parkway 17-08 号，自助洗衣、代收代洗、专业干洗一站搞定，方便快捷。</span></p>
+        <p><span class="t on" id="st-p2-en">Open 7 days a week. Attendants on duty to assist you. Drop off your laundry and get it back the same day, fresh and folded.</span><span class="t" id="st-p2-es">Abierto 7 días a la semana. Personal disponible para asistirle. Deje su ropa y recíbala el mismo día, fresca y doblada.</span><span class="t" id="st-p2-zh">全周营业，全程有店员为您服务。送来衣物，当天取回，干净整洁。</span></p>
+        <p>
+  <span class="t on" id="st-p3-en">Utopia Laundromat is an independent, community-focused laundromat. The owner has over 15 years of experience in the laundry industry and handles everything personally — from ensuring the store is always clean and tidy, to continuously researching ways to improve laundry quality. We are committed to putting customers first in everything we do. I manage the day-to-day operations serving our community and local residents. If you have any suggestions or ideas, we'd love to hear from you. Your support and participation mean the world to us — together we can build a cleaner, more comfortable community.</span>
+  <span class="t" id="st-p3-es">Utopia Laundromat es una lavandería independiente enfocada en la comunidad. El dueño tiene más de 15 años de experiencia en la industria y se encarga de todo personalmente — desde mantener el local siempre limpio y ordenado, hasta investigar constantemente formas de mejorar la calidad del lavado. Nos comprometemos a poner a los clientes primero en todo lo que hacemos. Me encargo de las operaciones diarias sirviendo a nuestra comunidad y residentes locales. Si tiene alguna sugerencia o idea, nos encantaría escucharla. Su apoyo y participación son muy importantes para nosotros — juntos podemos construir una comunidad más limpia y cómoda.</span>
+  <span class="t" id="st-p3-zh">Utopia Laundromat 是一家独立经营、服务社区的洗衣店。老板在洗衣行业拥有超过15年的经验，事事亲力亲为——无论是保持店内整洁有序，还是不断研究提升洗涤质量的方法，始终将顾客放在第一位。店长负责日常运营，为社区居民提供服务。如果您有任何建议或想法，欢迎随时告诉我们。感谢您的支持与参与，我们携手共建一个更干净、更舒适的社区。</span>
+</p>
+        <a href="tel:7183527622" class="btn-call">
+          <span class="t on" id="st-btn-en">📞 Call 718-352-7622</span>
+          <span class="t" id="st-btn-es">📞 Llamar 718-352-7622</span>
+          <span class="t" id="st-btn-zh">📞 拨打 718-352-7622</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CAREER -->
+<section id="career">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="cr-ey-en">Join Our Team</span><span class="t" id="cr-ey-es">Únase a Nuestro Equipo</span><span class="t" id="cr-ey-zh">加入我们</span></div>
+    <h2 class="section-title"><span class="t on" id="cr-tt-en">Career Opportunities</span><span class="t" id="cr-tt-es">Oportunidades de Empleo</span><span class="t" id="cr-tt-zh">招聘岗位</span></h2>
+    <div class="rule"></div>
+    <p class="body-text" style="margin-bottom:32px;">
+      <span class="t on" id="cr-intro-en">We are hiring reliable team members who are ready to support our store and serve the local community.</span>
+      <span class="t" id="cr-intro-es">Estamos contratando miembros responsables del equipo para apoyar nuestra tienda y servir a la comunidad local.</span>
+      <span class="t" id="cr-intro-zh">我们正在招聘认真负责的员工，一起服务门店和周边社区。</span>
+    </p>
+
+    <div class="career-grid">
+      <div class="career-card">
+        <div class="career-card-head">
+          <div class="career-icon">🧺</div>
+          <h3><span class="t on" id="cr1-tt-en">Laundry Staff</span><span class="t" id="cr1-tt-es">Personal de Lavandería</span><span class="t" id="cr1-tt-zh">洗衣员工</span></h3>
+        </div>
+        <ul class="career-list">
+          <li><span class="t on" id="cr1-li1-en">Required 1–2 years laundry industry working experience.</span><span class="t" id="cr1-li1-es">Se requiere de 1 a 2 años de experiencia laboral en la industria de lavandería.</span><span class="t" id="cr1-li1-zh">要求有 1-2 年洗衣行业工作经验。</span></li>
+          <li><span class="t on" id="cr1-li2-en">Can speak English and Chinese fluently.</span><span class="t" id="cr1-li2-es">Debe hablar inglés y chino con fluidez.</span><span class="t" id="cr1-li2-zh">能够流利使用英语和中文交流。</span></li>
+        </ul>
+      </div>
+
+      <div class="career-card">
+        <div class="career-card-head">
+          <div class="career-icon">🚶</div>
+          <h3><span class="t on" id="cr2-tt-en">Delivery Flyers Staff</span><span class="t" id="cr2-tt-es">Personal de Distribución de Volantes</span><span class="t" id="cr2-tt-zh">派发传单员工</span></h3>
+        </div>
+        <ul class="career-list">
+          <li><span class="t on" id="cr2-li1-en">Required road directions fluently.</span><span class="t" id="cr2-li1-es">Debe conocer las direcciones y rutas con soltura.</span><span class="t" id="cr2-li1-zh">要求熟悉道路方向和路线。</span></li>
+          <li><span class="t on" id="cr2-li2-en">Can walk a long distance.</span><span class="t" id="cr2-li2-es">Debe poder caminar largas distancias.</span><span class="t" id="cr2-li2-zh">能够长距离步行。</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="career-cta">
+      <div class="career-cta-text">
+        <strong><span class="t on" id="cr-cta-tt-en">Interested in applying?</span><span class="t" id="cr-cta-tt-es">¿Le interesa postularse?</span><span class="t" id="cr-cta-tt-zh">想应聘吗？</span></strong>
+        <span class="t on" id="cr-cta-tx-en">Please call or email us to ask about the current opening and application details.</span>
+        <span class="t" id="cr-cta-tx-es">Llámenos o envíenos un correo para consultar las vacantes actuales y los detalles de la solicitud.</span>
+        <span class="t" id="cr-cta-tx-zh">欢迎来电或发邮件咨询当前岗位空缺和申请详情。</span>
+      </div>
+      <a href="mailto:utopiaLaundromat@gmail.com" class="btn-call" style="margin-top:0;">
+        <span class="t on" id="cr-btn-en">✉️ Apply by Email</span>
+        <span class="t" id="cr-btn-es">✉️ Postularse por Correo</span>
+        <span class="t" id="cr-btn-zh">✉️ 邮件应聘</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- LUCKY DRAW -->
+<section id="lottery">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="lt-ey-en">Store Event</span><span class="t" id="lt-ey-es">Evento de la Tienda</span><span class="t" id="lt-ey-zh">店内活动</span></div>
+    <h2 class="section-title"><span class="t on" id="lt-tt-en">Lucky Receipt Draw</span><span class="t" id="lt-tt-es">Sorteo de Recibos con Suerte</span><span class="t" id="lt-tt-zh">幸运收据抽奖活动</span></h2>
+    <div class="rule"></div>
+
+    <div class="lottery-wrap">
+      <div class="lottery-main">
+        <div class="lottery-highlight">
+          <span>🎉</span>
+          <span class="t on" id="lt-tag-en">More drop-off orders, more chances to win</span>
+          <span class="t" id="lt-tag-es">Más órdenes drop-off, más oportunidades de ganar</span>
+          <span class="t" id="lt-tag-zh">代洗次数越多，中奖机会越大</span>
+        </div>
+
+        <p>
+          <span class="t on" id="lt-p1-en">Every day, our laundromat issues different receipt numbers for drop-off service orders. Behind every special number, there may be one lucky customer.</span>
+          <span class="t" id="lt-p1-es">Cada día, nuestra lavandería genera diferentes números de recibo para los pedidos de servicio drop-off. Detrás de cada número especial, puede haber un cliente afortunado.</span>
+          <span class="t" id="lt-p1-zh">我们洗衣店每天都会为代洗服务生成不同编号的收据，每一个特别号码背后，都可能对应一位幸运顾客。</span>
+        </p>
+
+        <ul class="lottery-rules">
+          <li><span class="t on" id="lt-r1-en">If your receipt shows one of our lucky numbers, you may become the selected winner and receive a mystery gift.</span><span class="t" id="lt-r1-es">Si su recibo muestra uno de nuestros números de la suerte, puede convertirse en el ganador seleccionado y recibir un regalo misterioso.</span><span class="t" id="lt-r1-zh">如果您的收据上出现我们的幸运号码，您就有机会成为幸运儿，并获得一份神秘礼物。</span></li>
+          <li><span class="t on" id="lt-r2-en">After one set of lucky numbers has all appeared, we will continue with a new set of different lucky numbers.</span><span class="t" id="lt-r2-es">Después de que aparezca toda una ronda de números afortunados, seguiremos con un nuevo grupo de números diferentes.</span><span class="t" id="lt-r2-zh">当这一轮幸运号码全部出现后，我们还会继续推出新的一组不同幸运号码。</span></li>
+          <li><span class="t on" id="lt-r3-en">Winners will be notified by phone message, so please keep your contact information available when placing a drop-off order.</span><span class="t" id="lt-r3-es">Los ganadores serán notificados por mensaje telefónico, así que por favor mantenga disponible su información de contacto al realizar un pedido drop-off.</span><span class="t" id="lt-r3-zh">中奖顾客将会通过电话短信通知，请您在办理代洗时保留好联系方式。</span></li>
+          <li><span class="t on" id="lt-r4-en">The more times you use our drop-off service, the more chances you have to win. Thank you for participating.</span><span class="t" id="lt-r4-es">Cuantas más veces use nuestro servicio drop-off, más oportunidades tendrá de ganar. Gracias por participar.</span><span class="t" id="lt-r4-zh">代洗次数越多，中奖机会越大。感谢大家多多参与。</span></li>
+        </ul>
+      </div>
+
+      <div class="lottery-side">
+        <h3><span class="t on" id="lt-side-tt-en">Current Lucky Numbers</span><span class="t" id="lt-side-tt-es">Números de la Suerte Actuales</span><span class="t" id="lt-side-tt-zh">本轮幸运号码</span></h3>
+        <p><span class="t on" id="lt-side-p-en">Check your drop-off receipt carefully. If you see one of the following numbers, you may be our next lucky winner.</span><span class="t" id="lt-side-p-es">Revise cuidadosamente su recibo drop-off. Si ve uno de los siguientes números, usted puede ser nuestro próximo ganador afortunado.</span><span class="t" id="lt-side-p-zh">请仔细查看您的代洗收据，如果出现以下任意号码，您就可能成为下一位幸运儿。</span></p>
+
+        <div class="lucky-grid">
+          <div class="lucky-box">1888</div>
+          <div class="lucky-box">2888</div>
+          <div class="lucky-box">3888</div>
+          <div class="lucky-box">4888</div>
+          <div class="lucky-box">5888</div>
+          <div class="lucky-box">6888</div>
+          <div class="lucky-box">7888</div>
+          <div class="lucky-box">8888</div>
+          <div class="lucky-box">9888</div>
+        </div>
+
+        <div class="lottery-note">
+          <span class="t on" id="lt-note-en">Please keep your receipt after every drop-off order. Your lucky number could appear at any time, and your mystery gift may be waiting for you.</span>
+          <span class="t" id="lt-note-es">Guarde su recibo después de cada pedido drop-off. Su número de la suerte puede aparecer en cualquier momento, y su regalo misterioso puede estar esperándolo.</span>
+          <span class="t" id="lt-note-zh">请妥善保留每一次代洗收据，您的幸运号码随时都有可能出现，神秘礼物也许就在等您。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow"><span class="t on" id="ct-ey-en">Find Us</span><span class="t" id="ct-ey-es">Encuéntrenos</span><span class="t" id="ct-ey-zh">联系我们</span></div>
+    <h2 class="section-title"><span class="t on" id="ct-tt-en">Hours &amp; Contact</span><span class="t" id="ct-tt-es">Horario y Contacto</span><span class="t" id="ct-tt-zh">营业时间与联系方式</span></h2>
+    <div class="rule"></div>
+    <div class="contact-layout">
+      <div>
+        <div class="hours-list" id="hours-list"></div>
+        <p class="hours-note"><span class="t on" id="hn-en">* Closed on most major holidays.</span><span class="t" id="hn-es">* Cerrado en la mayoría de días festivos importantes.</span><span class="t" id="hn-zh">* 大多数重要节假日休息。</span></p>
+      </div>
+      <div>
+        <div class="contact-items">
+          <div class="c-item"><div class="c-icon">📞</div><div><div class="c-label">Phone</div><div class="c-value"><a href="tel:7183527622">718-352-7622</a></div></div></div>
+          <div class="c-item"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-value"><a href="/cdn-cgi/l/email-protection#5b2e2f342b323a373a2e353f2934363a2f1b3c363a323775383436"><span class="__cf_email__" data-cfemail="b1c4c5dec1d8d0ddd0c4dfd5c3dedcd0c5f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></div></div></div>
+          <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Store Address</div><div class="c-value">17-08 Utopia Pkwy<br>Whitestone, NY 11357</div></div></div>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.349!2d-73.81483!3d40.78744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2608e4b2f3e4f%3A0x0!2s17-08+Utopia+Pkwy%2C+Whitestone%2C+NY+11357!5e0!3m2!1sen!2sus!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="images/logo.jpg" alt="Logo">
+  <div class="fname">UTOPIA LAUNDROMAT INC.</div>
+  <div>17-08 Utopia Pkwy, Whitestone, NY 11357</div>
+  <div style="margin-top:6px">© 2025 Utopia Laundromat Inc. All rights reserved.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+// ── HERO SLIDER ──
+(function(){
+  const total = 10;
+  let cur = 0, timer;
+
+  const dotsEl = document.getElementById('heroDots');
+  for(let i=0;i<total;i++){
+    const d = document.createElement('div');
+    d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:#fff;opacity:0.4;cursor:pointer;transition:opacity 0.3s;';
+    d.onclick = (function(idx){ return function(){ goTo(idx); resetTimer(); }; })(i);
+    dotsEl.appendChild(d);
+  }
+
+  function updateDots(){
+    dotsEl.childNodes.forEach(function(d,i){ d.style.opacity = i===cur?'1':'0.4'; });
+  }
+
+  function goTo(n){
+    cur = (n + total) % total;
+    document.getElementById('heroSlider').style.transform = 'translateX(-'+(cur*100)+'%)';
+    updateDots();
+  }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(function(){ goTo(cur+1); }, 4000);
+  }
+
+  window.heroSlide = function(dir){ goTo(cur+dir); resetTimer(); };
+
+  updateDots();
+  resetTimer();
+})();
+</script><script>
+// ── DATA ──
+const doData = [
+  [1,10,12.00],
+  [11,11,13.10],
+  [12,12,14.20],
+  [13,13,15.30],
+  [14,14,16.40],
+  [15,15,17.50],
+  [16,16,18.60],
+  [17,17,19.70],
+  [18,18,20.80],
+  [19,19,21.90],
+  [20,20,23.00],
+  [21,21,24.10],
+  [22,22,25.20],
+  [23,23,26.30],
+  [24,24,27.40],
+  [25,25,28.50],
+  [26,26,29.60],
+  [27,27,30.70],
+  [28,28,31.80],
+  [29,29,32.90],
+  [30,30,34.00],
+  [31,31,35.10],
+  [32,32,36.20],
+  [33,33,37.30],
+  [34,34,38.40],
+  [35,35,39.50],
+  [36,36,40.60],
+  [37,37,41.70],
+  [38,38,42.80],
+  [39,39,43.90],
+  [40,40,45.00],
+  [41,41,46.10],
+  [42,42,47.20],
+  [43,43,48.30],
+  [44,44,49.40],
+  [45,45,50.50],
+  [46,46,51.60],
+  [47,47,52.70],
+  [48,48,53.80],
+  [49,49,54.90],
+  [50,50,56.00],
+  [51,51,57.10],
+  [52,52,58.20],
+  [53,53,59.30],
+  [54,54,60.40],
+  [55,55,61.50],
+  [56,56,62.60],
+  [57,57,63.70],
+  [58,58,64.80],
+  [59,59,65.90],
+  [60,60,67.00],
+  [61,61,68.10],
+  [62,62,69.20],
+  [63,63,70.30],
+  [64,64,71.40],
+  [65,65,72.50],
+  [66,66,73.60],
+  [67,67,74.70],
+  [68,68,75.80],
+  [69,69,76.90],
+  [70,70,78.00],
+  [71,71,79.10],
+  [72,72,80.20],
+  [73,73,81.30],
+  [74,74,82.40],
+  [75,75,83.50],
+  [76,76,84.60],
+  [77,77,85.70],
+  [78,78,86.80],
+  [79,79,87.90],
+  [80,80,89.00],
+  [81,81,90.10],
+  [82,82,91.20],
+  [83,83,92.30],
+  [84,84,93.40],
+  [85,85,94.50],
+  [86,86,95.60],
+  [87,87,96.70],
+  [88,88,97.80],
+  [89,89,98.90],
+  [90,90,100.00],
+  [91,91,101.10],
+  [92,92,102.20],
+  [93,93,103.30],
+  [94,94,104.40],
+  [95,95,105.50],
+  [96,96,106.60],
+  [97,97,107.70],
+  [98,98,108.80],
+  [99,99,109.90],
+  [100,100,111.00]
+];
+
+const dcData = [
+  {en:"Pants",        es:"Pantalón",          zh:"裤子",      p:"$5.50"},
+  {en:"Jean",         es:"Jeans",             zh:"牛仔裤",    p:"$5.50"},
+  {en:"Shirt",        es:"Camisa",            zh:"衬衫",      p:"$5.50"},
+  {en:"Blouse",       es:"Blusa",             zh:"女式上衣",  p:"$5.50"},
+  {en:"Tank Top",     es:"Camiseta",          zh:"背心",      p:"$5.50"},
+  {en:"T-Shirt",      es:"Camiseta",          zh:"T恤",       p:"$5.50"},
+  {en:"Vest",         es:"Chaleco",           zh:"马甲",      p:"$5.50"},
+  {en:"Cotton Cap",   es:"Gorra",             zh:"棉帽",      p:"$5.50"},
+  {en:"Tie",          es:"Corbata",           zh:"领带",      p:"$4.50"},
+  {en:"Skirt",        es:"Falda",             zh:"短裙",      p:"$5.50"},
+  {en:"Long Skirt",   es:"Falda Larga",       zh:"长裙",      p:"$8.00"},
+  {en:"Pleat Shirt",  es:"Camisa Plisada",    zh:"百褶衬衫",  p:"$9.00"},
+  {en:"Robe",         es:"Bata",              zh:"浴袍",      p:"$8.00"},
+  {en:"Dress",        es:"Vestido",           zh:"连衣裙",    p:"$9.50"},
+  {en:"Long Dress",   es:"Vestido Largo",     zh:"长裙礼服",  p:"$18.00"},
+  {en:"Pleat Dress",  es:"Vestido Plisado",   zh:"百褶连衣裙",p:"$13.00"},
+  {en:"Fancy Dress",  es:"Vestido de Gala",   zh:"礼服裙",    p:"$20.50"},
+  {en:"Sweater",      es:"Suéter",            zh:"毛衣",      p:"$5.50"},
+  {en:"Long Sweater", es:"Suéter Largo",      zh:"长款毛衣",  p:"$10.00"},
+  {en:"Heavy Sweater",es:"Suéter Grueso",     zh:"厚毛衣",    p:"$13.50"},
+  {en:"Scarf",        es:"Bufanda",           zh:"围巾",      p:"$5.50"},
+  {en:"Long Scarf",   es:"Bufanda Larga",     zh:"长围巾",    p:"$8.00"},
+  {en:"Lab Coat",     es:"Bata de Laboratorio",zh:"白大褂",   p:"$8.50"},
+  {en:"Suit 2pcs",    es:"Traje 2 Piezas",    zh:"西装2件套", p:"$12.00"},
+  {en:"Uniform 2pcs", es:"Uniforme 2 Piezas", zh:"制服2件套", p:"$12.00"},
+  {en:"Short Coat 1/4",es:"Abrigo Corto",     zh:"短款外套",  p:"$12.00"},
+  {en:"Medium Coat 1/2",es:"Abrigo Mediano",  zh:"中款外套",  p:"$14.00"},
+  {en:"Long Coat 3/4", es:"Abrigo Largo",     zh:"长款外套",  p:"$16.00"},
+  {en:"Extra Long Coat",es:"Abrigo Extra Largo",zh:"超长外套",p:"$18.00"},
+  {en:"Rain Coat",    es:"Impermeable",       zh:"雨衣",      p:"$16.00"},
+  {en:"Jacket",       es:"Chaqueta",          zh:"夹克",      p:"$6.50"},
+  {en:"Long Jacket",  es:"Chaqueta Larga",    zh:"长款夹克",  p:"$16.00"},
+  {en:"Heavy Jacket", es:"Chaqueta Gruesa",   zh:"厚夹克",    p:"$16.00"},
+  {en:"Down Vest",    es:"Chaleco de Plumas", zh:"羽绒背心",  p:"$20.00"},
+  {en:"Down Jacket",  es:"Chaqueta de Plumas",zh:"羽绒服",    p:"$30.00"},
+  {en:"Down Coat",    es:"Abrigo de Plumas",  zh:"羽绒大衣",  p:"$30.00"}
+];
+
+// ── RENDER DROP-OFF TABLE ──
+(function(){
+  const tbody = document.getElementById('do-tbody');
+  const half = Math.ceil(doData.length / 2);
+  for(let i=0; i<half; i++){
+    const l = doData[i], r = doData[i+half];
+    const ll = l[0]===l[1] ? l[0] : `${l[0]}–${l[1]}`;
+    let tr = `<tr class="${i===0?'min-row':''}"><td>${ll}</td><td><strong>$${l[2].toFixed(2)}</strong></td>`;
+    if(r){ const rl = r[0]===r[1]?r[0]:`${r[0]}–${r[1]}`; tr+=`<td>${rl}</td><td><strong>$${r[2].toFixed(2)}</strong></td>`; }
+    else tr+=`<td></td><td></td>`;
+    tr+=`</tr>`;
+    tbody.innerHTML += tr;
+  }
+})();
+
+// ── RENDER DRY CLEANING ──
+(function(){
+  const g = document.getElementById('dc-grid');
+  dcData.forEach((item, idx)=>{
+    g.innerHTML+=`<div class="dc-row">
+      <span class="dc-name">
+        <span class="t on" id="dc-n${idx}-en">${item.en}</span>
+        <span class="t" id="dc-n${idx}-es">${item.es}</span>
+        <span class="t" id="dc-n${idx}-zh">${item.zh}</span>
+      </span>
+      <span class="dc-price">${item.p}</span>
+    </div>`;
+  });
+})();
+
+// ── RENDER HOURS ──
+(function(){
+  const days = [
+    {en:'Monday',es:'Lunes',zh:'周一',t:'7:30 AM – 7:00 PM',d:1},
+    {en:'Tuesday',es:'Martes',zh:'周二',t:'7:30 AM – 7:00 PM',d:2},
+    {en:'Wednesday',es:'Miércoles',zh:'周三',t:'7:30 AM – 7:00 PM',d:3},
+    {en:'Thursday',es:'Jueves',zh:'周四',t:'7:30 AM – 7:00 PM',d:4},
+    {en:'Friday',es:'Viernes',zh:'周五',t:'7:30 AM – 7:00 PM',d:5},
+    {en:'Saturday',es:'Sábado',zh:'周六',t:'7:30 AM – 7:00 PM',d:6},
+    {en:'Sunday',es:'Domingo',zh:'周日',t:'7:30 AM – 6:00 PM',d:0},
+  ];
+  const today = new Date().getDay();
+  const list = document.getElementById('hours-list');
+  days.forEach(d=>{
+    list.innerHTML += `<div class="hours-row">
+      <span class="day ${d.d===today?'today':''}">
+        <span class="t on" data-en="${d.en}">${d.en}</span>
+        <span class="t" data-es="${d.es}">${d.es}</span>
+        <span class="t" data-zh="${d.zh}">${d.zh}</span>
+      </span>
+      <span class="time">${d.t}</span>
+    </div>`;
+  });
+})();
+
+// ── PARTNER EMAIL ──
+function sendPartnerEmail() {
+  var name    = document.getElementById('pm-name').value.trim();
+  var type    = document.getElementById('pm-type').value.trim();
+  var intro   = document.getElementById('pm-intro').value.trim();
+  var contact1= document.getElementById('pm-contact1').value.trim();
+  var contact2= document.getElementById('pm-contact2').value.trim();
+  var address = document.getElementById('pm-address').value.trim();
+  var errEl   = document.getElementById('pm-error');
+
+  if(!name || !contact1) {
+    errEl.style.display = 'block';
+    errEl.textContent = lang==='zh' ? '请填写姓名/公司名称及联系方式1（必填）。'
+      : lang==='es' ? 'Por favor complete el nombre y Contacto 1 (obligatorio).'
+      : 'Please fill in Name and Contact 1 (required).';
+    return;
+  }
+  errEl.style.display = 'none';
+
+  var subject = encodeURIComponent('Business Partnership Inquiry – ' + name);
+  var body = encodeURIComponent(
+    'Partnership Inquiry from Website\n' +
+    '================================\n' +
+    'Name / Company: ' + name + '\n' +
+    'Business Type:  ' + (type || '—') + '\n' +
+    'Introduction:   ' + (intro || '—') + '\n' +
+    'Contact 1:      ' + contact1 + '\n' +
+    'Contact 2:      ' + (contact2 || '—') + '\n' +
+    'Address:        ' + (address || '—') + '\n'
+  );
+
+  window.location.href = 'mailto:utopiaLaundromat@gmail.com?subject=' + subject + '&body=' + body;
+}
+
+// ── LANG SYSTEM ──
+// ── TAB SYSTEM ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.t').forEach(el => { el.classList.remove('on'); el.style.display='none'; });
+  document.querySelectorAll('.t[id$="-'+l+'"], .t[data-'+l+']').forEach(el => {
+    el.classList.add('on');
+    el.style.display='';
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    if((l==='en'&&b.textContent.trim()==='English')||(l==='es'&&b.textContent.trim()==='Español')||(l==='zh'&&b.textContent.trim()==='中文')){
+      b.classList.add('active');
+    }
+  });
+}
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"6790ce54b67a4b7f8a391deb3312fb39","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<div id="progress"><i id="progressFill"></i></div>
 <a class="gift-marquee" href="detail.html?topic=gift" aria-label="View prepaid cards and gift certificates">
   <span class="gift-track"><span>🎁 <span data-i18n="of1.t"></span> · Give the gift of time · 🎁 <span data-i18n="of1.t"></span> · Give the gift of time · 🎁 <span data-i18n="of1.t"></span> · Give the gift of time · </span></span>
 </a>
@@ -25,6 +26,7 @@
         <a href="#updates" data-i18n="nav.offers"></a>
         <a href="#services" data-i18n="nav.services"></a>
         <a href="#pricing" data-i18n="nav.pricing"></a>
+        <a href="#shop" data-i18n="nav.shop"></a>
         <a href="#commercial" data-i18n="nav.commercial"></a>
         <a href="#visit" data-i18n="nav.visit"></a>
         <a href="#contact" data-i18n="nav.contact"></a>
@@ -42,32 +44,36 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home" style="padding-bottom:0">
-  <div class="wrap">
+<!-- HERO / CINEMATIC AUTOPLAY -->
+<section class="hero cine" id="home" style="padding-bottom:0">
+  <div class="hero-media cine-bg" id="heroMedia">
+    <img class="slide on" src="images/1.jpg" alt="Utopia Laundromat storefront, Whitestone NY">
+    <img class="slide" src="images/2.jpg" alt="Self-service machines" loading="lazy">
+    <img class="slide" src="images/6.jpg" alt="Clean and bright store interior" loading="lazy">
+    <div class="hero-veil"></div>
+  </div>
+  <div class="hero-word" id="heroWord" aria-hidden="true">UTOPIA</div>
+  <div class="wrap cine-fg">
+    <div class="hero-brand rv"><img src="images/logo.jpg" alt="Utopia Laundromat logo"><div><b>UTOPIA LAUNDROMAT INC.</b><small>WHITESTONE · NEW YORK</small></div></div>
     <div class="kicker rv" data-i18n="hero.kicker"></div>
-    <h1 class="rv rv-d1" data-i18n="hero.title"></h1>
+    <div class="cine-lines rv rv-d1">
+      <h1 class="cine-line on" data-i18n="hero.title"></h1>
+      <h1 class="cine-line" data-i18n="hero.r2"></h1>
+      <h1 class="cine-line" data-i18n="hero.r3"></h1>
+    </div>
     <div class="hero-sub">
       <p class="rv rv-d2" data-i18n="hero.sub"></p>
       <div class="hero-cta rv rv-d3">
         <a class="btn btn-solid" href="tel:7183527622" data-i18n="hero.call"></a>
-        <a class="btn" href="#pricing" data-i18n="nav.pricing"></a>
+        <a class="btn btn-glass" href="#pricing" data-i18n="nav.pricing"></a>
+        <button class="btn btn-glass" id="tourBtn">▶ <span data-i18n="player.tip"></span></button>
       </div>
     </div>
-  </div>
-  <div class="wrap" style="position:relative">
-    <div class="scroll-hint" data-i18n="scroll.hint"></div>
-    <div class="hero-media rv" id="heroMedia">
-      <img class="slide on" src="images/1.jpg" alt="Utopia Laundromat storefront, Whitestone NY">
-      <img class="slide" src="images/2.jpg" alt="Self-service machines" loading="lazy">
-      <img class="slide" src="images/6.jpg" alt="Clean and bright store interior" loading="lazy">
-      <div class="hero-veil"></div>
-      <div class="dots" id="heroDots"><button class="on" aria-label="1"></button><button aria-label="2"></button><button aria-label="3"></button></div>
-      <div class="hero-info">
-        <div><b>17-08 Utopia Pkwy</b><span>Whitestone, NY 11357</span></div>
-        <div><b data-i18n="hero.hoursb"></b><span data-i18n="hero.hourss"></span></div>
-        <div><b><a href="tel:7183527622">718-352-7622</a></b><span>utopiaLaundromat@gmail.com</span></div>
-      </div>
+    <div class="dots cine-dash" id="heroDots"><button class="on" aria-label="1"></button><button aria-label="2"></button><button aria-label="3"></button></div>
+    <div class="hero-info">
+      <div><b>17-08 Utopia Pkwy</b><span>Whitestone, NY 11357</span></div>
+      <div><b data-i18n="hero.hoursb"></b><span data-i18n="hero.hourss"></span></div>
+      <div><b><a href="tel:7183527622">718-352-7622</a></b><span>utopiaLaundromat@gmail.com</span></div>
     </div>
   </div>
   <div class="wrap">
@@ -114,10 +120,23 @@
   <div class="wrap">
     <div class="news-band rv">
       <div class="news-head"><span class="eyebrow" data-i18n="news.eyebrow"></span></div>
-      <a class="news-row" href="#quote"><span class="nd">09 / 2026</span><span class="nt"><b data-i18n="news.t1"></b><small data-i18n="news.d1"></small></span><span class="na">→</span></a>
+      <a class="news-row" href="#quote" data-svc="3"><span class="nd">09 / 2026</span><span class="nt"><b data-i18n="news.t1"></b><small data-i18n="news.d1"></small></span><span class="na">→</span></a>
       <a class="news-row" href="#lucky"><span class="nd">09 / 2026</span><span class="nt"><b data-i18n="news.t2"></b><small data-i18n="news.d2"></small></span><span class="na">→</span></a>
       <a class="news-row" href="#commercial"><span class="nd">09 / 2026</span><span class="nt"><b data-i18n="news.t3"></b><small data-i18n="news.d3"></small></span><span class="na">→</span></a>
     </div>
+  </div>
+</section>
+
+<!-- 00 ORIGIN -->
+<section id="origin">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-index">00</div>
+      <div><div class="eyebrow" data-i18n="org.eyebrow"></div><h2 data-i18n="org.title"></h2></div>
+    </div>
+    <div class="org-row rv"><div class="ok" data-i18n="org.k1k"></div><div><h3 data-i18n="org.k1t"></h3><p data-i18n="org.k1d"></p></div></div>
+    <div class="org-row rv rv-d1"><div class="ok" data-i18n="org.k2k"></div><div><h3 data-i18n="org.k2t"></h3><p data-i18n="org.k2d"></p></div></div>
+    <div class="org-row rv rv-d2"><div class="ok" data-i18n="org.k3k"></div><div><h3 data-i18n="org.k3t"></h3><p data-i18n="org.k3d"></p></div></div>
   </div>
 </section>
 
@@ -135,7 +154,7 @@
         <h3><span data-i18n="s1.t"></span><small>Coin-op · All sizes</small></h3>
         <p data-i18n="s1.d"></p>
         <div style="display:flex;gap:18px;align-items:center">
-          <div class="svc-price">$3–8.25<span data-i18n="per.wash"></span></div>
+          <div class="svc-price"><span data-price="wash.small" data-fmt="0"></span>–<span data-price="wash.large"></span><span data-i18n="per.wash"></span></div>
           <img class="svc-thumb" src="images/3.jpg" alt="Self-service machines">
         </div>
       </a>
@@ -145,7 +164,7 @@
         <h3><span data-i18n="s2.t"></span><small>Same-day · Shirts on hangers</small></h3>
         <p data-i18n="s2.d"></p>
         <div style="display:flex;gap:18px;align-items:center">
-          <div class="svc-price">$1.10<span data-i18n="calc.lbs"></span><span>min $12.00</span></div>
+          <div class="svc-price"><span data-price="drop.lb"></span><span data-i18n="calc.lbs"></span><span>min <span data-price="drop.min"></span></span></div>
           <img class="svc-thumb" src="images/4.jpg" alt="Drop-off wash and fold">
         </div>
       </a>
@@ -154,12 +173,32 @@
         <h3><span data-i18n="s3.t"></span><small>Suits · Delicates</small></h3>
         <p data-i18n="s3.d"></p>
         <div style="display:flex;gap:18px;align-items:center">
-          <div class="svc-price">$4.50+<span data-i18n="s3.p"></span></div>
+          <div class="svc-price"><span data-price="dry.from"></span>+<span data-i18n="s3.p"></span></div>
           <img class="svc-thumb" src="images/5.jpg" alt="Dry cleaning">
         </div>
       </a>
     </div>
   </div>
+</section>
+
+<!-- WHY UTOPIA -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-index">✦</div>
+      <div><div class="eyebrow" data-i18n="why.eyebrow"></div><h2 data-i18n="why.title"></h2></div>
+    </div>
+    <div class="why-stack">
+      <a class="why-card rv" href="#quote" data-svc="0"><div><div class="wn">01</div><div class="wk" data-i18n="why.v1k"></div><h3 data-i18n="why.v1t"></h3><p data-i18n="why.v1d"></p><span class="go" data-i18n="more"></span></div><div class="wph"><img src="images/3.jpg" alt="One minute to drop off" loading="lazy"></div></a>
+      <a class="why-card rv" href="detail.html?topic=dropoff"><div><div class="wn">02</div><div class="wk" data-i18n="why.v2k"></div><h3 data-i18n="why.v2t"></h3><p data-i18n="why.v2d"></p><span class="go" data-i18n="more"></span></div><div class="wph"><img src="images/4.jpg" alt="We handle everything" loading="lazy"></div></a>
+      <a class="why-card rv" href="#pricing"><div><div class="wn">03</div><div class="wk" data-i18n="why.v3k"></div><h3 data-i18n="why.v3t"></h3><p data-i18n="why.v3d"></p><span class="go" data-i18n="more"></span></div><div class="wph"><img src="images/5.jpg" alt="Pick up fresh" loading="lazy"></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" style="padding-top:0">
+  <div class="wrap"><p id="scrubLine" data-i18n="manifesto"></p><p style="text-align:center;margin-top:30px"><button class="btn btn-sm" id="expandAll">＋ <span data-i18n="expandAll"></span></button></p></div>
 </section>
 
 <!-- 02 PRICING -->
@@ -178,10 +217,10 @@
 
     <div class="panel active" id="panel-self">
       <div class="price-grid">
-        <div class="price-cell"><div class="lbl" data-i18n="p.small"></div><b>$3.00</b><span data-i18n="per.wash"></span></div>
-        <div class="price-cell"><div class="lbl" data-i18n="p.medium"></div><b>$6.00</b><span data-i18n="per.wash"></span></div>
-        <div class="price-cell"><div class="lbl" data-i18n="p.large"></div><b>$8.25</b><span data-i18n="per.wash"></span></div>
-        <div class="price-cell"><div class="lbl" data-i18n="p.dryer"></div><b>$0.25</b><span data-i18n="per.cycle"></span></div>
+        <div class="price-cell"><div class="lbl" data-i18n="p.small"></div><b data-price="wash.small"></b><span data-i18n="per.wash"></span></div>
+        <div class="price-cell"><div class="lbl" data-i18n="p.medium"></div><b data-price="wash.medium"></b><span data-i18n="per.wash"></span></div>
+        <div class="price-cell"><div class="lbl" data-i18n="p.large"></div><b data-price="wash.large"></b><span data-i18n="per.wash"></span></div>
+        <div class="price-cell"><div class="lbl" data-i18n="p.dryer"></div><b data-price="dryer"></b><span data-i18n="per.cycle"></span></div>
       </div>
     </div>
 
@@ -194,28 +233,72 @@
           <input type="range" id="lbs" min="5" max="60" value="20" step="1">
           <p style="opacity:.55;font-size:13px" data-i18n="calc.note"></p>
         </div>
-        <div class="calc-out"><span data-i18n="calc.est"></span><b id="calc-total">$22.00</b><span>$1.10/lb · min $12.00</span></div>
+        <div class="calc-out"><span data-i18n="calc.est"></span><b id="calc-total">$22.00</b><span><span data-price="drop.lb"></span>/lb · min <span data-price="drop.min"></span></span></div>
       </div>
       <table class="table-minimal">
         <tr><th id="wt-h1a"></th><th id="wt-h2a"></th><th id="wt-h1b"></th><th id="wt-h2b"></th></tr>
         <tbody id="weight-rows"></tbody>
       </table>
+      <p class="note" data-i18n="drop.note"></p>
     </div>
 
     <div class="panel" id="panel-home">
       <div class="bed-grid">
-        <div><span data-i18n="b.blanket"></span><b>$16</b></div>
-        <div><span data-i18n="b.s"></span><b>$16</b></div>
-        <div><span data-i18n="b.m"></span><b>$18</b></div>
-        <div><span data-i18n="b.l"></span><b>$20</b></div>
-        <div><span data-i18n="b.down"></span><b>$22</b></div>
+        <div><span data-i18n="b.blanket"></span><b data-price="bed.blanket" data-fmt="0"></b></div>
+        <div><span data-i18n="b.s"></span><b data-price="bed.s" data-fmt="0"></b></div>
+        <div><span data-i18n="b.m"></span><b data-price="bed.m" data-fmt="0"></b></div>
+        <div><span data-i18n="b.l"></span><b data-price="bed.l" data-fmt="0"></b></div>
+        <div><span data-i18n="b.down"></span><b data-price="bed.down" data-fmt="0"></b></div>
       </div>
       <table class="table-minimal">
         <tr><th colspan="2" data-i18n="dc.t"></th></tr>
-        <tr><td data-i18n="dc.d"></td><td style="text-align:right"><b>$4.50+</b></td></tr>
+        <tr><td data-i18n="dc.d"></td><td style="text-align:right"><b><span data-price="dry.from"></span>+</b></td></tr>
       </table>
     </div>
     <p class="note" data-i18n="vary"></p>
+  </div>
+</section>
+
+<!-- SHOP / MINI MART -->
+<section id="shop">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-index">$</div>
+      <div><div class="eyebrow" data-i18n="shop.eyebrow"></div><h2 data-i18n="shop.title"></h2></div>
+      <p data-i18n="shop.sub"></p>
+    </div>
+    <div class="shop-filters rv" id="shopFilters">
+      <button class="active" data-cat="all" data-i18n="shop.all"></button>
+      <button data-cat="det" data-i18n="cat.det"></button>
+      <button data-cat="soft" data-i18n="cat.soft"></button>
+      <button data-cat="sheet" data-i18n="cat.sheet"></button>
+      <button data-cat="bleach" data-i18n="cat.bleach"></button>
+      <button data-cat="pods" data-i18n="cat.pods"></button>
+      <button data-cat="bag" data-i18n="cat.bag"></button>
+      <button data-cat="stain" data-i18n="cat.stain"></button>
+    </div>
+    <div class="shop-strip" id="shopStrip">
+      <div class="prod rv"><div class="ph"><img src="images/shop/p01.jpg" alt="Clorox 2 for Colors" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.stain"></span><h4>Clorox 2 for Colors</h4><div class="sz">2 oz · 1 load</div><div class="pr"><b>$1.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p02.jpg" alt="Xtra Detergent" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Xtra Detergent, Calypso Fresh</h4><div class="sz">48 loads · 57.6 fl oz</div><div class="pr"><b>$5.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p03.jpg" alt="Gain Original" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Gain Original</h4><div class="sz">25 fl oz</div><div class="pr"><b>$6.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p04.jpg" alt="Tide Original" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Tide Original</h4><div class="sz">25 fl oz</div><div class="pr"><b>$7.50</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p05.jpg" alt="Suavitel Morning Sun" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.soft"></span><h4>Suavitel, Morning Sun</h4><div class="sz">46 fl oz · 46 loads</div><div class="pr"><b>$6.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p06.jpg" alt="Suavitel Cuidado Superior" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.soft"></span><h4>Suavitel, Cuidado Superior</h4><div class="sz">850 ml</div><div class="pr"><b>$4.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p07.jpg" alt="Downy Ultra April Fresh" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.soft"></span><h4>Downy Ultra, April Fresh</h4><div class="sz">19 fl oz · 3X freshness</div><div class="pr"><b>$4.50</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p08.jpg" alt="Downy Soft April Fresh" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.soft"></span><h4>Downy Soft, April Fresh 2-in-1</h4><div class="sz">10 fl oz · 12 loads</div><div class="pr"><b>$2.25</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p09.jpg" alt="Ariel Powder" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Ariel Powder, Original · 2X Power</h4><div class="sz">8 oz · whites & colors</div><div class="pr"><b>$2.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p10.jpg" alt="Tide Power Pods" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.pods"></span><h4>Tide Power Pod, Ultra OXI</h4><div class="sz">Single pod · $1 each</div><div class="pr"><b>$1.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p11.jpg" alt="Bounce Dryer Sheets" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.sheet"></span><h4>Bounce, Outdoor Fresh · 5-in-1</h4><div class="sz">15 sheets</div><div class="pr"><b>$2.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p12.jpg" alt="Suavitel Dryer Sheets" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.sheet"></span><h4>Suavitel, Field Flowers · 2X fragrance</h4><div class="sz">20 sheets</div><div class="pr"><b>$2.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p13.jpg" alt="Tide Simply" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Tide Simply All in One, Daybreak Fresh</h4><div class="sz">32 fl oz · 24 loads</div><div class="pr"><b>$6.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p14.jpg" alt="Clorox Disinfecting Bleach" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.bleach"></span><h4>Clorox Disinfecting Bleach</h4><div class="sz">6-in-1 · kills 99.9%</div><div class="pr"><b>$4.50</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p15.jpg" alt="Clorox Disinfecting Bleach small" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.bleach"></span><h4>Clorox Disinfecting Bleach</h4><div class="sz">11 fl oz · 6-in-1</div><div class="pr"><b>$2.25</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p16.jpg" alt="Gain Original small" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.det"></span><h4>Gain Original</h4><div class="sz">10 fl oz · 6 loads</div><div class="pr"><b>$2.00</b></div></div></div>
+      <div class="prod rv"><div class="ph"><img src="images/shop/p17.jpg" alt="Laundry Bag" loading="lazy"></div><div class="bd"><span class="cat" data-i18n="cat.bag"></span><h4 data-i18n="prod.bag"></h4><div class="sz" data-i18n="prod.bagSz"></div><div class="pr"><b>$6.00</b></div></div></div>
+    </div>
+    <div class="shop-count rv"><span id="shopCount">17 / 17</span></div>
+    <div class="shop-empty" id="shopEmpty" hidden><span data-i18n="shop.empty"></span></div>
+    <p class="note" data-i18n="shop.note"></p>
   </div>
 </section>
 
@@ -226,11 +309,23 @@
       <div class="sec-index">03</div>
       <div><div class="eyebrow" data-i18n="process.eyebrow"></div><h2 data-i18n="process.title"></h2></div>
     </div>
-    <div class="steps">
-      <div class="step rv"><div class="n">/ 01</div><h4 data-i18n="st1.t"></h4><p data-i18n="st1.d"></p></div>
-      <div class="step rv rv-d1"><div class="n">/ 02</div><h4 data-i18n="st2.t"></h4><p data-i18n="st2.d"></p></div>
-      <div class="step rv rv-d2"><div class="n">/ 03</div><h4 data-i18n="st3.t"></h4><p data-i18n="st3.d"></p></div>
-      <div class="step rv rv-d3"><div class="n">/ 04</div><h4 data-i18n="st4.t"></h4><p data-i18n="st4.d"></p></div>
+    <div class="scrolly-grid">
+      <div class="scroll-visual rv">
+        <img class="on" src="images/3.jpg" alt="Bring your laundry">
+        <img src="images/4.jpg" alt="We take care of it" loading="lazy">
+        <img src="images/5.jpg" alt="Pick up same day" loading="lazy">
+        <img src="images/2.jpg" alt="Enjoy your time" loading="lazy">
+        <div class="veil"></div>
+        <div class="scroll-rail"><i id="phaseBar"></i></div>
+        <a class="scroll-phase" href="detail.html?topic=dropoff"><div class="pn" id="phaseNum">/ 01</div><div class="pt" id="phaseTitle">Bring Your Laundry</div></a>
+      </div>
+      <div>
+        <div class="s-step on" data-i="0"><div class="n">/ 01</div><h4 data-i18n="st1.t"></h4><p data-i18n="st1.d"></p></div>
+        <div class="s-step" data-i="1"><div class="n">/ 02</div><h4 data-i18n="st2.t"></h4><p data-i18n="st2.d"></p></div>
+        <div class="s-step" data-i="2"><div class="n">/ 03</div><h4 data-i18n="st3.t"></h4><p data-i18n="st3.d"></p></div>
+        <div class="s-step" data-i="3"><div class="n">/ 04</div><h4 data-i18n="st4.t"></h4><p data-i18n="st4.d"></p></div>
+        <p style="margin:10px 0 30px"><a class="more-link" href="detail.html?topic=dropoff" data-i18n="more"></a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -245,13 +340,16 @@
     <div class="com-grid">
       <div class="com-copy rv">
         <p class="lead-c" data-i18n="com.d"></p>
-        <div class="ind-row"><span>🍽️ Restaurants</span><span>💇 Salons & Spas</span><span>🏋️ Gyms</span><span>🏨 Hotels</span><span>🏠 Airbnb</span><span>🏥 Care</span></div>
+        <div class="ind-row"><span>🍽️ <b data-i18n="ind1"></b></span><span>💇 <b data-i18n="ind2"></b></span><span>🏋️ <b data-i18n="ind3"></b></span><span>🏨 <b data-i18n="ind4"></b></span><span>🏠 <b data-i18n="ind5"></b></span><span>🏥 <b data-i18n="ind6"></b></span></div>
         <div class="perk"><div class="pn">/ 01</div><div><b data-i18n="c1.t"></b><span data-i18n="c1.d"></span></div></div>
         <div class="perk"><div class="pn">/ 02</div><div><b data-i18n="c2.t"></b><span data-i18n="c2.d"></span></div></div>
         <div class="perk"><div class="pn">/ 03</div><div><b data-i18n="c3.t"></b><span data-i18n="c3.d"></span></div></div>
+        <p class="rv" style="font-family:var(--serif);font-size:clamp(21px,2.6vw,28px);margin:24px 0 8px" data-i18n="com.ready"></p>
+        <p class="rv" style="opacity:.65;font-size:14px;margin:0 0 4px" data-i18n="com.custom"></p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
           <a class="btn btn-light" href="tel:7183527622" data-i18n="com.cta"></a>
-          <a class="btn btn-ghostlight" href="#quote" data-i18n="com.quote"></a>
+          <a class="btn btn-ghostlight" href="#quote" data-svc="1" data-i18n="com.quote"></a>
+          <a class="more-link light" href="detail.html?topic=business" data-i18n="more"></a>
         </div>
       </div>
       <div class="com-media rv rv-d1 img-zoom"><img src="images/6.jpg" alt="Commercial laundry service"></div>
@@ -266,23 +364,25 @@
       <div class="sec-index">05</div>
       <div><div class="eyebrow" data-i18n="visit.eyebrow"></div><h2 data-i18n="visit.title"></h2></div>
     </div>
-    <div class="visit-grid">
-      <div>
-        <div class="visit-main-img rv img-zoom"><img src="images/2.jpg" alt="Inside Utopia Laundromat"></div>
-        <p class="story rv" data-i18n="visit.story"></p>
+    <div class="sticky-grid">
+      <a class="sticky-visual wipe" href="detail.html?topic=visit"><img src="images/2.jpg" alt="Inside Utopia Laundromat"></a>
+      <div class="v-steps">
+        <div class="v-step on"><p style="font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);line-height:1.5;margin:0" data-i18n="visit.intro"></p></div>
+        <div class="v-step"><p class="story" style="margin:0" data-i18n="visit.story"></p></div>
+        <div class="v-step"><p style="border-left:3px solid var(--cobalt);padding-left:16px;font-weight:600;margin:0 0 14px" data-i18n="visit.duty"></p><p style="margin:0"><a class="more-link" href="detail.html?topic=visit" data-i18n="more"></a></p></div>
       </div>
-      <div class="rv rv-d1">
-        <div class="facts">
-          <div class="fact"><div class="k" data-i18n="info.addr"></div><div>17-08 Utopia Pkwy<br>Whitestone, NY 11357</div></div>
-          <div class="fact"><div class="k" data-i18n="info.hours"></div><div data-i18n="hours.detail"></div></div>
-          <div class="fact"><div class="k" data-i18n="info.phone"></div><div><a href="tel:7183527622">718-352-7622</a></div></div>
-          <div class="fact"><div class="k" data-i18n="info.email"></div><div><a href="mailto:utopiaLaundromat@gmail.com">utopiaLaundromat@gmail.com</a></div></div>
-        </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
-          <a class="btn btn-solid" href="https://www.google.com/maps/dir/?api=1&destination=17-08+Utopia+Pkwy+Whitestone+NY+11357" target="_blank" rel="noopener" data-i18n="map.nav"></a>
-        </div>
-        <div class="map-frame"><iframe title="map" src="https://www.google.com/maps?q=17-08+Utopia+Pkwy+Whitestone+NY+11357&output=embed" loading="lazy"></iframe></div>
+    </div>
+    <div class="rv" style="margin-top:36px">
+      <div class="facts">
+        <div class="fact"><div class="k" data-i18n="info.addr"></div><div>17-08 Utopia Pkwy<br>Whitestone, NY 11357</div></div>
+        <div class="fact"><div class="k" data-i18n="info.hours"></div><div data-i18n="hours.detail"></div></div>
+        <div class="fact"><div class="k" data-i18n="info.phone"></div><div><a href="tel:7183527622">718-352-7622</a></div></div>
+        <div class="fact"><div class="k" data-i18n="info.email"></div><div><a href="mailto:utopiaLaundromat@gmail.com">utopiaLaundromat@gmail.com</a></div></div>
       </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+        <a class="btn btn-solid" href="https://www.google.com/maps/dir/?api=1&destination=17-08+Utopia+Pkwy+Whitestone+NY+11357" target="_blank" rel="noopener" data-i18n="map.nav"></a>
+      </div>
+      <div class="map-frame"><iframe title="map" src="https://www.google.com/maps?q=17-08+Utopia+Pkwy+Whitestone+NY+11357&output=embed" loading="lazy"></iframe></div>
     </div>
     <div class="strip-cap" data-i18n="gal.t"></div>
     <div class="filmstrip rv">
@@ -310,8 +410,8 @@
       <div class="job rv"><div class="jn">/ 01</div><h3 data-i18n="j1.t"></h3><ul><li data-i18n="j1.l1"></li><li data-i18n="j1.l2"></li></ul></div>
       <div class="job rv rv-d1"><div class="jn">/ 02</div><h3 data-i18n="j2.t"></h3><ul><li data-i18n="j2.l1"></li><li data-i18n="j2.l2"></li></ul></div>
     </div>
-    <p class="rv" style="margin-top:22px;color:var(--muted)" data-i18n="j.cta"></p>
-    <p class="rv" style="margin-top:14px"><a class="btn btn-solid" href="mailto:utopiaLaundromat@gmail.com?subject=Job%20Application%20—%20Utopia%20Laundromat" data-i18n="j.apply"></a></p>
+    <p class="rv" style="margin-top:22px"><strong data-i18n="j.tt"></strong><br><span style="color:var(--muted)" data-i18n="j.cta"></span></p>
+    <p class="rv" style="margin-top:14px"><a class="btn btn-solid" href="mailto:utopiaLaundromat@gmail.com?subject=Job%20Application%20—%20Utopia%20Laundromat" data-i18n="j.apply"></a> <a class="more-link" href="detail.html?topic=careers" data-i18n="more"></a></p>
   </div>
 </section>
 
@@ -322,17 +422,21 @@
       <div class="sec-index">07</div>
       <div><div class="eyebrow" data-i18n="lucky.eyebrow"></div><h2 data-i18n="lucky.title"></h2></div>
       <p data-i18n="lucky.sub"></p>
+      <p style="margin-top:12px"><a class="more-link" href="detail.html?topic=lucky" data-i18n="more"></a></p>
     </div>
     <div class="lucky rv">
+      <p style="opacity:.7;max-width:640px;margin:0 auto 14px" data-i18n="lucky.intro"></p>
       <div class="eyebrow" data-i18n="lucky.eyebrow"></div>
       <h2 data-i18n="lucky.now"></h2>
-      <div class="lucky-nums"><div>1888</div><div>2888</div><div>3888</div><div>4888</div><div>5888</div><div>6888</div><div>7888</div><div>8888</div></div>
+      <p style="opacity:.65;font-size:14px;margin-top:10px" data-i18n="lucky.check"></p>
+      <div class="lucky-nums"><div>1888</div><div>2888</div><div>3888</div><div>4888</div><div>5888</div><div>6888</div><div>7888</div><div>8888</div><div>9888</div></div>
       <div class="lucky-rules">
         <div><b>a.</b><span data-i18n="lr1"></span></div>
         <div><b>b.</b><span data-i18n="lr2"></span></div>
         <div><b>c.</b><span data-i18n="lr3"></span></div>
         <div><b>d.</b><span data-i18n="lr4"></span></div>
       </div>
+      <p style="margin-top:22px;opacity:.75;font-size:14px" data-i18n="lucky.keep"></p>
     </div>
   </div>
 </section>
@@ -390,11 +494,31 @@
     <div class="foot-word">UTOPIA</div>
     <div class="foot-row">
       <span><b style="color:#fff">UTOPIA LAUNDROMAT INC.</b> · <span data-i18n="foot.tag"></span></span>
-      <span data-i18n="foot.rights"></span>
+      <span><span data-i18n="foot.rights"></span> · <a href="admin.html" style="color:#6f6a5e;text-decoration:none" title="staff">店员</a></span>
     </div>
   </div>
 </footer>
 
+<nav id="sideNav" aria-label="chapters">
+  <a class="sn-logo" href="#home" aria-label="home"><img src="images/logo.jpg" alt="Utopia"></a>
+  <a href="#origin" data-sec="origin"><i></i><span data-i18n="sn.origin"></span></a>
+  <a href="#services" data-sec="services"><i></i><span data-i18n="sn.services"></span></a>
+  <a href="#pricing" data-sec="pricing"><i></i><span data-i18n="sn.pricing"></span></a>
+  <a href="#shop" data-sec="shop"><i></i><span data-i18n="sn.shop"></span></a>
+  <a href="#process" data-sec="process"><i></i><span data-i18n="sn.process"></span></a>
+  <a href="#commercial" data-sec="commercial"><i></i><span data-i18n="sn.business"></span></a>
+  <a href="#visit" data-sec="visit"><i></i><span data-i18n="sn.visit"></span></a>
+  <a href="#lucky" data-sec="lucky"><i></i><span data-i18n="sn.lucky"></span></a>
+  <a href="#quote" data-sec="quote"><i></i><span data-i18n="sn.quote"></span></a>
+  <div class="lang sn-lang"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="zh">中</button></div>
+  <a class="sn-call" href="tel:7183527622" aria-label="call">✆</a>
+</nav>
+<div id="player" aria-label="story player">
+  <button id="ppPrev" aria-label="previous">⏮</button>
+  <button id="ppPlay" aria-label="play">▶</button>
+  <button id="ppNext" aria-label="next">⏭</button>
+  <div class="pp-meta"><b id="ppName">UTOPIA</b><div class="pp-bar"><i id="ppFill"></i></div></div>
+</div>
 <div class="fab">
   <a class="call" href="tel:7183527622" title="call">✆</a>
   <a class="top" href="#home" title="top">↑</a>
@@ -415,6 +539,7 @@
 </div>
 
 <div class="lightbox" id="lightbox" onclick="closeLight()"><img src="" alt="preview"></div>
+<script src="config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
